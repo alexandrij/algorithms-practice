@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.container--theme-gray {
+    border: 1px solid #cccccc;
+}
+
+.container--theme-dark {
+    border: 1px solid #333333;
+}
+
+.root {
+    position: absolute;    
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 100px;
+    min-height: 100px;
+    flex: 1 1 100px;
+}
+
+.main {
+    flex: 1 1 auto;
+}
+
+.content {
+    height: 1000px;
+}
+
+.footer {
+    height: 30px;
+}
