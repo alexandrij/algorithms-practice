@@ -1,19 +1,37 @@
-var Employee = (function() {
-    var name;
-    var Employee = function(options) {
-        options = options || {};
-        name = options.name || null;
+/**
+ * Модуль
+ */
+var example = (function() {
+    let indexes = new Map();
+    const getId = function(prefix) {
+        prefix = String(prefix || 'sp');
+        let index = (indexes.get(prefix) || 1);
+        indexes.set(prefix, index + 1);
+        return prefix + '-' + index;
     };
-    Employee.prototype.getName = function() {
-        return name;
+    return {
+        print: () => { console.log(indexes) },
+        getId: getId
     };
-    return User;
 })();
+ 
+let Company = (function() {
+    let instance;
+    const privateProps = {};
+    const Constructor = function(options) {
+        if (instance instanceof Constructor) { 
+            return instance; 
+        }
 
-var Company = (function() {
-    var company; 
-    var Company = function() {
+        options = options || {};
+        privateProps.name = options.name;
 
+        return (instance = this);
     };
-    return company || (company = new Company());
+    Constructor.prototype.getName = function() {
+        return privateProps.name;
+    };
+    Constructor.prototype.setName = function(name) {
+        privateProps.name = name;
+    };
 })();
