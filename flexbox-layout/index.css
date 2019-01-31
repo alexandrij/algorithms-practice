@@ -26,20 +26,50 @@ body {
     flex-direction: column;
 }
 
-.header {
-    height: 100px;
-    min-height: 100px;
-    flex: 1 1 100px;
-}
-
-.main {
-    flex: 1 1 auto;
-}
-
-.content {
-    height: 1000px;
-}
 
 .footer {
     height: 30px;
+}
+
+@media (min-width: 520px) {
+    .root {
+        font-size: 1rem;
+    }
+    .header {
+        flex: 1 1 100px;
+    }
+    .main {
+        flex: auto;
+        display: flex;
+        flex-direction: row;
+    }
+    .nav {
+        width: 200px;
+    }
+    .content {
+        flex: 1 1 auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .root {
+        font-size: 1.3rem;
+    }
+    .header {
+        flex: 1 1 content;
+    }
+    .main {
+        flex: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav {
+        flex: 1 1 content;
+        order: 2;
+    }
+    .content {
+        min-height: 100px;
+        flex: 1 1 auto;
+        order: 2;
+    }
 }
