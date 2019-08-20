@@ -1,16 +1,3 @@
-countingCall = function (fn) {
-    const callback = function(arr) {
-        callback.counter += arr.length;
-        return fn(arr);
-    }
-    callback.counter = 0;
-    return callback;
-}
-
-/**
- * Bubble sort
- */
-
 const bubbleSort = (arr) => {
     let counter = 0;
     for (let len = arr.length, i = len; i > 0; i--) {
@@ -60,28 +47,28 @@ const selectionSort = (arr) => {
  * 3) pivot = 5; left = [3, 3]; right = [];       res = [][1][3, 3][5][][8][]
  * 3) pivot = 3; left = [3]; right = [];          res = [][1][3][3][][5][][8][]
  */
-const quickSort = countingCall((arr) => {
-    if (arr.length < 2) { return arr; }
+const quickSort = (arr) => {
+    var counter = 0;
+    const sorter = (arr) => {
+        if (arr.length < 2) { return arr; }
 
-    let len = arr.length;
-    let a = [];
-    let b = [];
-    let pivot = Math.floor(len / 2);
+        let len = arr.length;
+        let a = [];
+        let b = [];
+        let pivot = Math.floor(len / 2);
 
-    for (let i = 0; i < len; i++) {
-        if (arr[i] < arr[pivot]) {
-            a.push(arr[i]);
-        } else if (i !== pivot) {
-            b.push(arr[i]);
+        for (let i = 0; i < len; i++) {
+            if (arr[i] < arr[pivot]) {
+                a.push(arr[i]);
+            } else if (i !== pivot) {
+                b.push(arr[i]);
+            }
+            counter++;
         }
-    }
-    return quickSort(a).concat(arr[pivot], quickSort(b));
-});
-
-const quick = function (arr) {
-    quickSort.counter = 0;
-    res = quickSort(arr);
-    console.log('quickSort', quickSort.counter);
+        return sorter(a).concat(arr[pivot], sorter(b));
+    };
+    const res = sorter(arr);
+    console.log('quickSort', counter);
     return res;
 };
 
