@@ -1,4 +1,4 @@
-const bubbleSort = (arr) => {
+const bubbleSort = function (arr) {
     let counter = 0;
     for (let len = arr.length, i = len; i > 0; i--) {
         for (let j = 0, temp; j < i; j++) {
@@ -14,7 +14,7 @@ const bubbleSort = (arr) => {
     return arr;
 };
 
-const selectionSort = (arr) => {
+const selectionSort = function (arr) {
     let counter = 0;
 
     for (let i = 0, len = arr.length; i < len - 1; i++) {
@@ -36,13 +36,28 @@ const selectionSort = (arr) => {
     console.log('selectionSort:', counter);
     return arr;
 };
+
+const insertionSort = function (arr) {
+    for (let i = 1, len = arr.length; i < len; i++) {
+        let cur = arr[i];
+        let j = i;
+
+        while (j > 0 && arr[j - 1] > cur) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = cur;
+    }
+    return arr;
+}
+
 /**
  * quickSort([3, 5, 4, 8, 3]):
  * start:0, end:4, pivot:4, left:3, right:1, arr:[3,3,4,8,5]
  * start:0, end:1, pivot:3, left:1, right:0, arr:[3,3,4,8,5]
  * start:3, end:4, pivot:8, left:4, right:3, arr:[3,3,4,5,8]
  */
-const quickSort = (arr) => {
+const quickSort = function (arr) {
     let counter = 0;
 
     const sorter = (arr, start, end) => {
@@ -92,43 +107,25 @@ const quickSort = (arr) => {
     return res;
 };
 
+const mergeSort = function (arr) {
+    if (arr.length < 2) { return arr; }
 
-/**
- * 
- * quickSort2([3, 5, 1, 8, 3]):
- * 
- * pivot":1,"arr":[3,5,1,8,3] => [1][3,5,8,3]
- * pivot":8,"arr":[3,5,8,3] => [1][3,5,3][8]
- * pivot":5,"arr":[3,5,3] => [1][3,3][5][8]
- * pivot":3,"arr":[3,3] => [1][3][3][5][8]
- * 
- * counter
- */
-const quickSort2 = (arr) => {
-    let counter = 0;
-    const sorter = (arr) => {
-        if (arr.length < 2) { return arr; }
+    let pivot = arr[Math.floor(arr.length / 2)];
+    let left = [];
+    let right = [];
 
-        let len = arr.length;
-        let a = [];
-        let b = [];
-        let pivot = Math.floor(len / 2);
-
-        for (let i = 0; i < len; i++) {
-            if (arr[i] < arr[pivot]) {
-                a.push(arr[i]);
-            } else if (i !== pivot) {
-                b.push(arr[i]);
-            }
-            counter++;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
         }
-        console.log(JSON.stringify({
-            pivot: arr[pivot],
-            arr: arr
-        }));
-        return sorter(a).concat(arr[pivot], sorter(b));
-    };
-    const res = sorter(arr);
-    console.log('quickSort', counter);
-    return res;
+        if (arr[i] > pivot) {
+            right.push(arr[i]);
+        }
+    }
+
+    return [].concat(
+        mergeSort(left),
+        pivot,
+        mergeSort(right)
+    );
 };
