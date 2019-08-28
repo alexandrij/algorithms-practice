@@ -22,12 +22,6 @@ const calc = (function () {
     };
 
     const calc = (str) => {
-        const debugObj = {
-            operations: [],
-            operands: [],
-            numbers: null
-        };
-
         const args = str.split(' ');
         const ops = ['+', '-', '*', '/'];
         const numbers = [];
