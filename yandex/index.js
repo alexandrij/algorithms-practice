@@ -30,21 +30,21 @@ const binarySearch = function (arr, target, start, end) {
     if (target < arr[middle]) return binarySearch(arr, target, start, middle);
 };
 
-const reverseString = function(str) {
+const reverseString = function (str) {
     const arr = str.split('');
     let temp;
     let i = 0;
     let j = arr.length - 1;
-    
+
     while (i < j) {
-      temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-      i++; 
-      j--;
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i++;
+        j--;
     }
     return arr.join('');
-  };
+};
 
 const game = function (arr) {
     const n = arr.length;
@@ -75,4 +75,11 @@ const game = function (arr) {
         }
     }
     return (curGamer.summ > nextGamer.summ) ? curGamer.name : nextGamer.name;
+};
+
+const complexNumber = function (k) {
+    let sum = 0;
+    let sumK = String(k).split('').reduce((sum, item) => { return sum += +item; }, 0);
+    return (3 * k) / Math.pow(sumK, 2);
 }
+
