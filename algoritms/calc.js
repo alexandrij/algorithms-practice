@@ -42,7 +42,7 @@ const calc = (function () {
                     throw new Error('Error in Syntax'); 
                 }
                 numbers.push(execOperation(operand1, operand2, operation));
-            } else if (/^[0-9-]+$/.test(arg)) {
+            } else if (/^-?[0-9]+\.?[0-9]*$/.test(arg)) {
                 numbers.push(parseFloat(arg));
             } else {
                 throw new Error('Error in Operands');
