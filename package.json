@@ -2,9 +2,9 @@
   "name": "example-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "npx jasmine **/*.spec.js"
+    "test": "npx jasmine ./src/**/*.spec.js",
+    "lint": "npx eslint ./src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "eslint": "^7.14.0",
+    "eslint-plugin-jasmine": "^4.1.1",
     "jasmine": "^3.6.3",
     "jasmine-spec-reporter": "^6.0.0"
   }

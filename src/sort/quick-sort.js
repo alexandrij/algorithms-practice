@@ -53,3 +53,4 @@ const quickSort = function (arr) {
     console.log('quickSort', counter);
     return res;
 };
+moduel.exports = quickSort;

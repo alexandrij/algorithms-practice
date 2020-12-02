@@ -20,3 +20,5 @@ const mergeSort = function (arr) {
         mergeSort(right)
     );
 };
+
+module.exports = mergeSort;

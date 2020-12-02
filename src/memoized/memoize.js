@@ -12,3 +12,4 @@ const memoize = (fn) => {
         }
     }
 };
+module.exports = memoize;

@@ -10,6 +10,7 @@ const requestPool = async (urls, callback, limit = 5) => {
         callback(await Promise.all(urls.splice(0, limit).map(url => fetch(url))));
     }
 };
+module.exports = requestPool;
 
 const urls = [
     "http://example-app/async/data/1.json",
@@ -27,4 +28,4 @@ const urls = [
 requestPool([...urls,...urls], (results) => {
     console.log('----');
     console.log(...results);
-}, 3)
+}, 3);

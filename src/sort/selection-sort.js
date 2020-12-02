@@ -17,6 +17,6 @@ const selectionSort = function (arr) {
             arr[min] = temp;
         }
     }
-    console.log('selectionSort:', counter);
     return arr;
 };
+module.exports = selectionSort;

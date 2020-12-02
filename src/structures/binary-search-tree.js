@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class BST {
+class BinarySearchTree {
     constructor() {
         this.root = null;
     }
@@ -23,8 +23,7 @@ class BST {
                     if (node.left === null) {
                         node.left = new Node(data);
                         return;
-                    }
-                    else if (node.left !== null) {
+                    } else if (node.left !== null) {
                         return searchTree(node.left);
                     }
                 } else if (data > node.data) {
@@ -74,5 +73,5 @@ class BST {
         }
         this.root = removeNode(this.root, data);
     }
-
 }
+module.exports = BinarySearchTree;

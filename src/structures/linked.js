@@ -83,3 +83,5 @@ Linked.prototype.reverse = function() {
         cur = cur.next;
     }
 }
+
+module.exports = Linked;

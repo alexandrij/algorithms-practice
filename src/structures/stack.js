@@ -1,5 +1,5 @@
 /**
- * Временная сложность очереди 
+ * Временная сложность стека 
  * ╔═══════════╦═════════╦══════════════╗
  * ║ Алгоритм  ║В среднем║Худший случай ║
  * ╠═══════════╬═════════╬══════════════╣
@@ -9,19 +9,27 @@
  * ║ Delete    ║ O(1)    ║ O(1)         ║
  * ╚═══════════╩═════════╩══════════════╝
  */
-
-const Queue = function () {
-    this.collection = [];
+const Stack = function() {
+    this.count = 0;
+    this.storage = {};
 };
 
-Queue.prototype.enqueue = function (value) {
-    this.collection.push(value);
+Stack.prototype.push = function(value) {
+    this.storage[this.count] = value;
+    this.count++;
 };
 
-Queue.prototype.dequeue = function () {
-    return this.collection.shift();
+Stack.prototype.pop = function() {
+    if (this.count === 0) {
+        return undefined;
+    }
+    this.count--;
+    var value = this.storage[this.count];
+    delete this.storage[this.count];
+    return value;
 };
 
-Queue.prototype.size = function () {
-    return this.collection.length;
+Stack.prototype.size = function() {
+    return this.count;
 }
+module.exports = Stack;

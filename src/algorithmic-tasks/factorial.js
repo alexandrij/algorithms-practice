@@ -1,4 +1,4 @@
-module.exports = factorial = (n) => {
+const factorial = (n) => {
     if (!Number.isInteger(n)) {
         throw new Error(`Value "${n}" is not integer`);
     }
@@ -8,3 +8,4 @@ module.exports = factorial = (n) => {
     }
     return res;
 }
+module.exports = factorial;
