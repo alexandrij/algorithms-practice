@@ -5,35 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Priority css-rules</title>
     <style>
-        .box {
+        .box1 {
             width: 100px;
             height: 100px;
+            margin: 10px;
         }
-
         * {
             background: black;
         }
-
-        .box {
+        .box1, .box2, .box3 {
             background: yellow;
         }
-
-        .box.block {
+        .box1.block {
             background: green;
         }
-
         .block {
             background: red
         }
-
         div.block {
             background: blue
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        div#box3 {
+            background: sandybrown;
+        }
+        #box3 {
+            background: sandybrown;
         }
     </style>
 </head>
 <body>
-<div class="box block"></div>
 
+<div class="box1 block"></div>
+
+<div class="box2 block"></div>
+
+<div id="box3" class="box3 block"></div>
 
 </body>
 </html>
