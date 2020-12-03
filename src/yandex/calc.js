@@ -59,6 +59,7 @@ const calc = (function () {
 })();
 
 
+
 console.log(calc('7 2 * 3 +'));    // 7 * 2 + 3 = 17
 console.log(calc('7 2 3 * -'));    // 7 - (2 * 3) = 1
 console.log(calc('7 2 3 1 + * -')); // 7 - 2 * (3 - 1) = -1
@@ -69,3 +70,7 @@ console.log(calc('7 2 3 1 * - - 3 5 + -')); // ??
 console.log(calc('1 1 + +'));      // Error in Syntax
 console.log(calc('1 2 2 *'));      // Error in Syntax
 console.log(calc('1 b x + c -'));    // Error in Operands
+
+
+
+

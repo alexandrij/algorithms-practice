@@ -9,3 +9,5 @@ module.exports = getCountInputString = (str1, str2) => {
 }
 
 console.log(getCountInputString('камни', 'драгоценности'));
+
+

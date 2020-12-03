@@ -6,7 +6,7 @@ class Holder {
             }
             return uniqueArr;
         }, []);
-    };
+    }
     
     uniqueWithCached(arr) {
         const cachedUniqueItems = new Map();
@@ -17,12 +17,12 @@ class Holder {
             }
             return uniqueArr;
         }, []);
-    };
+    }
     
     uniqueWithSet(arr) {
         return Array.from(new Set(arr));
-    };
-};
+    }
+}
 
 const MAGIC_ARRAY_LENGTH = 1304209;
 const arr = new Array(MAGIC_ARRAY_LENGTH);
@@ -30,7 +30,7 @@ for (let i = 0; i < MAGIC_ARRAY_LENGTH; i++) {
     arr[i] = Math.floor(Math.random() * 1000000);
 }
 
-holder = new Holder();
+const holder = new Holder();
 
 let beginTime;
 let endTime;
@@ -41,11 +41,11 @@ let endTime;
 // console.log('unique', endTime - beginTime);
 
 beginTime = Date.now();
-unique1 = holder.uniqueWithCached(arr);
+const unique1 = holder.uniqueWithCached(arr);
 endTime = Date.now();
 console.log('uniqueWithCached', endTime - beginTime);
 
 beginTime = Date.now();
-unique2 = holder.uniqueWithSet(arr);
+const unique2 = holder.uniqueWithSet(arr);
 endTime = Date.now();
 console.log('uniqueWithSet', endTime - beginTime);
