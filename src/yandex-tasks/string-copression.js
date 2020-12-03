@@ -10,3 +10,4 @@ module.exports = stringCompression;
 console.log(stringCompression('aaaaaaaaaaaasssddfwfwessssfqqrtvvvverw'));
 console.log(stringCompression(''));
 console.log(stringCompression('aaaaa'));
+

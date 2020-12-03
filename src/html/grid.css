@@ -19,27 +19,27 @@ body > * {
                              "left-aside main   right-aside"
                              "footer     footer footer"
     }
-    
+
     .app-header {
         grid-area: header;
     }
-    
+
     .app-main {
         grid-area: main;
     }
-    
+
     .app-left-sidebar {
         grid-area: left-aside;
         padding: 10px;
     }
-    
+
     .app-right-sidebar {
         grid-area: right-aside;
     }
-    
+
     .app-footer {
         grid-area: footer;
-    }    
+    }
 }
 
 @media screen and (max-width: 520px) {

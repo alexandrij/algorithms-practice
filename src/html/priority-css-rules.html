@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Priority css-rules</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        * {
+            background: black;
+        }
+
+        .box {
+            background: yellow;
+        }
+
+        .box.block {
+            background: green;
+        }
+
+        .block {
+            background: red
+        }
+
+        div.block {
+            background: blue
+        }
+    </style>
+</head>
+<body>
+<div class="box block"></div>
+
+
+</body>
+</html>
