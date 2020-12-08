@@ -62,7 +62,7 @@ const calc = (function () {
 
 console.log(calc('7 2 * 3 +'));    // 7 * 2 + 3 = 17
 console.log(calc('7 2 3 * -'));    // 7 - (2 * 3) = 1
-console.log(calc('7 2 3 1 + * -')); // 7 - 2 * (3 - 1) = -1
+console.log(calc('7 2 3 1 + * -')); // 7 - 2 * (3 + 1) = -1
 
 console.log(calc('11 -12 -'));       // ??
 console.log(calc('7 2 3 1 * - - 3 5 + -')); // ??

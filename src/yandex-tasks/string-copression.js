@@ -1,7 +1,16 @@
 const stringCompression = (word) => {
     return word
         .split('')
-        .reduceRight((res, s) => (res.length > 0 ? (res[0][0] === s ? res[0].push(s) : res.unshift([s])) && res : [[s]]), [])
+        .reduceRight((res, s) => {
+            if (res.length > 0) {
+                if (res[0][0] === s)
+                    res[0].push(s)
+                else
+                    res.unshift([s])
+                return res;
+            } else
+                return [[s]];
+        }, [])
         .map(arr => arr.length > 1 ? arr[0] + arr.length : arr[0])
         .join('');
 }

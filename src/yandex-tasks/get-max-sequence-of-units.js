@@ -1,4 +1,5 @@
-module.exports = getMaxSequenceOfUnits = (n) => {
+const readline = require('readline');
+const getSequenceOfUnits = (n) => {
     let best = 0;
     let cur = 0;
 
@@ -11,8 +12,15 @@ module.exports = getMaxSequenceOfUnits = (n) => {
         }
     })
     return best;
-}
+};
 
-console.log(getMaxSequenceOfUnits([1,2,3,5,61,1,1,1,1,0]));
-console.log(getMaxSequenceOfUnits([0,0]));
-console.log(getMaxSequenceOfUnits([]));
+const rl = readline.createInterface({
+    input: process.stdin
+});
+
+let lines = [];
+rl.on('line', (line) => {
+    lines.push(Number(line));
+}).on('close', () => {
+    process.stdout.write(String(getSequenceOfUnits(lines)));
+});
