@@ -76,13 +76,7 @@
     arr[b] = temp;
 }
 
-/**
- * 'abcd' => ['a','b','c','d'];
- * 4 3 2 1
- * 
- */
-
-function permutation(arr, start) {
+const permutation = (arr, start) => {
     if (arr.length < 2) { return arr; }
 
     const len = arr.length;
@@ -106,3 +100,5 @@ function permutation(arr, start) {
     }
     return res;
 };
+
+console.log(permutation());
