@@ -26,19 +26,27 @@ f1000(5); // (тормозим, не прошло 1000 мс)
 // выведет 3 call, промежуточное значение 2 call игнорируется
 
 function throttle(fn, delay, ctx) {
-    let expires = 0;
-    let prev;
-    return (...args) => {
-        clearTimeout(prev);
+    let lastCtx;
+    let lastArgs;
+    let trottled = false;
 
-        if (expires < Date.now()) {
-            fn.call(ctx, ...args);
-            expires = Date.now() + delay;
-        } else {
-            prev = setTimeout(() => {
-                fn.call(ctx, ...args);
-                expires = Date.now() + delay;
-            }, expires - Date.now());
+    return (...args) => {
+        if (trottled) {
+            lastCtx = ctx;
+            lastArgs = args;
+            return;
         }
+
+        fn.call(ctx, ...args);
+        trottled = true;
+
+        setTimeout(() => {
+            trottled = false;
+            if (lastArgs) {
+                fn.call(lastCtx, ...lastArgs);
+                lastArgs = null;
+                lastCtx = null;
+            }
+        }, delay);
     }
 }
