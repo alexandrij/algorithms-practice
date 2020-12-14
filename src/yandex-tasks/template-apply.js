@@ -1,5 +1,5 @@
 const apply = (str, obj) => {
-    return str.replaceAll(/\{[A-Za-z0-9.]+\}/g, (s) => {
+    return str.replace(/\{[A-Za-z0-9.]+\}/g, (s) => {
         return s
             .substring(1, s.length - 1)
             .split('.')
