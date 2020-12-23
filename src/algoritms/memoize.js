@@ -1,15 +1,16 @@
-const memoize = (fn) => {
+const memoize = (fn, resolver) => {
+    if ((typeof fn !== 'function') || (resolver && typeof resolver !== 'function')) {
+        throw new TypeError(`the parameters of the required functions`);
+    }
     const cached = new Map();
+    resolver = resolver || JSON.stringify;
+
     return (...args) => {
-        const arg1 = args[0];
-        if (cached.has(arg1)) {
-            return cached.get(arg1);
+        const key = resolver(args);
+        if (!cached.has(key)) {
+            cached.set(key, fn.apply(this, args));
         }
-        else {
-            const result = fn(...args);
-            cached.set(arg1, result);
-            return result;
-        }
+        return cached.get(key);
     }
 };
 module.exports = memoize;
