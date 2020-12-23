@@ -12,8 +12,10 @@ Promise.resolve(0)
         throw "err-1"
     })
     .catch((e) => {
-        console.log(e);
-        return 3;
+        console.log('Error1:', e);
+    })
+    .catch((e) => {
+        console.log('Error2:', e);
     })
     .then((r) => {
         console.log(r);
@@ -25,4 +27,8 @@ Promise.resolve(0)
     })
     .catch((e) => {
         console.log(e);
+    })
+    .then((r) => {
+        console.log(r);
+        return 6;
     });
