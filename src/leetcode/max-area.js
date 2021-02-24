@@ -1,0 +1,3 @@
+const maxArea = (height) => {
+
+};
