@@ -14,7 +14,7 @@ const finsLowestCostNode = (costs, processed) => {
 const deikstra = (graph) => {
     const start = Object.keys(graph)[0];
     const costs = graph[start];
-    const parents = Object.keys(graph[start]).reduce((res, node) => (res[node] = start) && res, {});
+    const parents = {};
     const processed = new Set();
 
     let node;

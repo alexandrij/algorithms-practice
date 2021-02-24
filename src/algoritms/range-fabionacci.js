@@ -12,4 +12,9 @@ const rangeFibonacci = function (n) {
 
 
 
+console.log(rangeFibonacci(1));
+console.log(rangeFibonacci(2));
+console.log(rangeFibonacci(3));
+console.log(rangeFibonacci(4));
+console.log(rangeFibonacci(5));
 console.log(rangeFibonacci(40));
