@@ -19,7 +19,7 @@ const StoreManager = (function () {
         this.store.push(item);
     }
     StoreManager.prototype.getRange = function () {
-        this.store;
+        return this.store.data;
     }
 
     return StoreManager;
