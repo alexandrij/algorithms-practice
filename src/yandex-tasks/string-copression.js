@@ -1,22 +1,19 @@
 const stringCompression = (word) => {
-    return word
-        .split('')
-        .reduceRight((res, s) => {
-            if (res.length > 0) {
-                if (res[0][0] === s)
-                    res[0].push(s)
-                else
-                    res.unshift([s])
-                return res;
-            } else
-                return [[s]];
+    return word.split("")
+        .reduceRight((res, el) => {
+            if (res.length > 0 && res[0][0] === el) {
+                res[0][1]++;
+            } else {
+                res.unshift([el, 1]);
+            }
+            return res;
         }, [])
-        .map(arr => arr.length > 1 ? arr[0] + arr.length : arr[0])
-        .join('');
+        .map(el => el[1] > 1 ? el.join("") : el[0])
+        .join("");
 }
 module.exports = stringCompression;
 
-console.log(stringCompression('aaaaaaaaaaaasssddfwfwessssfqqrtvvvverw'));
+console.log(stringCompression('aaaaaaaaaaaasssddfwfwessssfqqrtvvvverww'));
 console.log(stringCompression(''));
 console.log(stringCompression('aaaaa'));
 
