@@ -1,4 +1,4 @@
-const memoize = (fn, resolver) => {
+export function memoize(fn, resolver) {
     if ((typeof fn !== 'function') || (resolver && typeof resolver !== 'function')) {
         throw new TypeError(`the parameters of the required functions`);
     }
@@ -12,5 +12,4 @@ const memoize = (fn, resolver) => {
         }
         return cached.get(key);
     }
-};
-module.exports = memoize;
+}

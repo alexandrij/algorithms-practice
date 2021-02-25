@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-const requestPool = async (urls, callback, limit = 5) => {
+export async function poolRequest(urls, callback, limit = 5) {
     urls = [...urls];
 
     if (urls.length === 0)
@@ -10,7 +10,6 @@ const requestPool = async (urls, callback, limit = 5) => {
         callback(await Promise.all(urls.splice(0, limit).map(url => fetch(url))));
     }
 };
-module.exports = requestPool;
 
 const urls = [
     "http://example-app/async/data/1.json",
@@ -25,7 +24,7 @@ const urls = [
     "http://example-app/async/data/10.json",
 ];
 
-requestPool([...urls,...urls], (results) => {
+poolRequest([...urls, ...urls], (results) => {
     console.log('----');
     console.log(...results);
 }, 3);

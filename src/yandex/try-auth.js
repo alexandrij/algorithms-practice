@@ -26,12 +26,10 @@ const tryAuth = (n) => {
     });
 }
 
-
-const sss = tryAuth(4)
-    .then((data) => {
-        console.log(data);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-
+// const sss = tryAuth(4)
+//     .then((data) => {
+//         console.log(data);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });

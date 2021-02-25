@@ -1,4 +1,4 @@
-const areAnagram = require('./are-anagram');
+import { areAnagram } from './are-anagram';
 
 describe(`Yandex. Anagram`, () => {
     it(`Количество букв в словах одинаково`, () => {

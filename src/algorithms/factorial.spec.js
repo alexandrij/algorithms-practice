@@ -1,4 +1,4 @@
-const factorial = require('./factorial');
+import { factorial } from './factorial';
 
 describe(`Factorial`, () => {
     it(`Факторил отрицательного числа: factorial(-3)`, () => {

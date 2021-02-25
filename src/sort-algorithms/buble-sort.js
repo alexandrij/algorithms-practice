@@ -10,4 +10,4 @@ const bubbleSort = function (arr) {
     }
     return arr;
 };
-module.exports = bubbleSort;
+export { bubbleSort }

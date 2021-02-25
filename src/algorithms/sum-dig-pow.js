@@ -1,4 +1,4 @@
-const sumDigPow = (a, b) => {
+export function sumDigPow(a, b) {
     const res = [];
     let curSumDigPow;
 
@@ -12,5 +12,3 @@ const sumDigPow = (a, b) => {
     }
     return res;
 }
-
-process.stdout

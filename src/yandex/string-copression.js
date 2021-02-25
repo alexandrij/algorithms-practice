@@ -11,7 +11,7 @@ const stringCompression = (word) => {
         .map(el => el[1] > 1 ? el.join("") : el[0])
         .join("");
 }
-module.exports = stringCompression;
+export { stringCompression }
 
 console.log(stringCompression('aaaaaaaaaaaasssddfwfwessssfqqrtvvvverww'));
 console.log(stringCompression(''));

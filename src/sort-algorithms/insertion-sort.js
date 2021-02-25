@@ -11,4 +11,4 @@ const insertionSort = function (arr) {
     }
     return arr;
 }
-module.exports = insertionSort;
+export { insertionSort }

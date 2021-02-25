@@ -1,7 +1,7 @@
 /**
  * 
  */
-function uniqueInOrder (iterable) {
+export function uniqueInOrder (iterable) {
     const res = [];
     let prev;
 

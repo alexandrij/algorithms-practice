@@ -1,22 +1,23 @@
 {
-  "name": "example-app",
+  "name": "algorithms-practice",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "npx jasmine ./src/**/*.spec.js",
-    "lint": "npx eslint ./src/**/*.js"
+    "test": "jasmine --require=esm ./src/**/*.spec.js",
+    "lint": "eslint ./src/**/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Alexandrij/example-app.git"
+    "url": "git+https://github.com/Alexandrij/algorithms-practice.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Alexandrij/example-app/issues"
+    "url": "https://github.com/Alexandrij/algorithms-practice/issues"
   },
-  "homepage": "https://github.com/Alexandrij/example-app#readme",
+  "homepage": "https://github.com/Alexandrij/algorithms-practice#readme",
   "dependencies": {
+    "esm": "^3.2.25",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-module.exports = binarySearch = (arr, target, start, end) => {
+export function binarySearch(arr, target, start, end) {
     start = typeof start === 'number' ? start : 0;
     end = typeof end === 'number' ? end : arr.length - 1;
 
@@ -11,4 +11,4 @@ module.exports = binarySearch = (arr, target, start, end) => {
     }
     if (target > arr[middle]) return binarySearch(arr, target, middle, end);
     if (target < arr[middle]) return binarySearch(arr, target, start, middle);
-};
+}

@@ -1,6 +1,4 @@
 const selectionSort = function (arr) {
-    let counter = 0;
-
     for (let i = 0, len = arr.length; i < len - 1; i++) {
         let min = i;
 
@@ -8,7 +6,6 @@ const selectionSort = function (arr) {
             if (arr[min] > arr[j]) {
                 min = j;
             }
-            counter++;
         }
 
         if (i !== min) {
@@ -19,4 +16,4 @@ const selectionSort = function (arr) {
     }
     return arr;
 };
-module.exports = selectionSort;
+export { selectionSort }

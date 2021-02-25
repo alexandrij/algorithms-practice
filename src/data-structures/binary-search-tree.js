@@ -1,4 +1,4 @@
-class Node {
+export class Node {
     constructor(data, left = null, right = null) {
         this.data = data;
         this.left = left;
@@ -6,7 +6,7 @@ class Node {
     }
 }
 
-class BinarySearchTree {
+export class BinarySearchTree {
     constructor() {
         this.root = null;
     }
@@ -74,4 +74,3 @@ class BinarySearchTree {
         this.root = removeNode(this.root, data);
     }
 }
-module.exports = BinarySearchTree;

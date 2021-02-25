@@ -65,9 +65,9 @@ const tree = {
     ]
 };
 
-console.log('traverse1: ', traverse1(tree));
-console.log('traverse2: ', traverse2(tree));
-console.log('dump: ', dumpDFS(tree));
-console.log('dumpBFS1: ', dumpBFS1(tree));
-console.log('dumpBFS2: ', dumpBFS2(tree));
-console.log();
+// console.log('traverse1: ', traverse1(tree));
+// console.log('traverse2: ', traverse2(tree));
+// console.log('dump: ', dumpDFS(tree));
+// console.log('dumpBFS1: ', dumpBFS1(tree));
+// console.log('dumpBFS2: ', dumpBFS2(tree));
+// console.log();

@@ -8,6 +8,6 @@ const integersCompression = (integers) => {
         .map(arr => arr.join('-'))
         .join(',');
 }
-module.exports = integersCompression;
+export { integersCompression }
 
 console.log(integersCompression([3, 2, 2, 1, 5, 6, 7, -1, 10]))

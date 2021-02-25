@@ -1,4 +1,4 @@
-const areAnagram = (a, b) => {
+export const areAnagram = (a, b) => {
     if (a.length !== b.length)
         return false;
 
@@ -7,5 +7,3 @@ const areAnagram = (a, b) => {
 
     return (aSet.size === bSet.size) && Array.from(aSet.keys()).every(s => bSet.has(s))
 }
-
-module.exports = areAnagram;

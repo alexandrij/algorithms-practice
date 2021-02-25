@@ -9,13 +9,13 @@
  * ║ Delete    ║ O(1)    ║ O(1)         ║
  * ╚═══════════╩═════════╩══════════════╝
  */
-const Node = function (value) {
+export const Node = function (value) {
     return {
         value: value,
         next: null
     };
 }
-const Linked = function () {
+export const Linked = function () {
     this.head = null;
     this.length = 0;
 }
@@ -83,5 +83,3 @@ Linked.prototype.reverse = function() {
         cur = cur.next;
     }
 }
-
-module.exports = Linked;

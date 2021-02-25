@@ -21,4 +21,4 @@ const mergeSort = function (arr) {
     );
 };
 
-module.exports = mergeSort;
+export { mergeSort }
