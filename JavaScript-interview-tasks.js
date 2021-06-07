@@ -1,20 +1,20 @@
 // 1. Приоритет выполнения асинхронных вызовов
-let a = 5;
+let a = 8;
 
 setTimeout(() => {
   console.log(`from setTimeout ${a}`);
-  a = 6;
+  a = 9;
 }, 0);
 
 const promise = new Promise((resolve) => {
   console.log(`from Promise ${a}`);
-  a = 7;
+  a = 3;
   resolve();
 });
 
 promise.then(() => {
   console.log(`from Promise then ${a}`);
-  a = 8;
+  a = 1;
 });
 
 console.log(`from ${a}`);
@@ -96,5 +96,83 @@ const poolRequest = async (urls, callback) => {
 };
 
 
+// 4.
+import { useEffect, useState } from "react";
+import "./styles.css";
+
+// header width: 100%, height: 70px;
+// main width: 100%, height: оставшее пространство;
+
+const environment = {
+  center: [0, 0],
+  zoom: 5
+}
+
+const MapContainer = ({ center, zoom }) => {
+  return (
+    <div>
+      center: {center}
+      <br />
+      zoom: {zoom}
+    </div>);
+}
+
+export default function App() {
+  return (
+    <div className="App">
+      <header>Hello</header>
+      <main>
+        // MapContainer
+      </main>
+    </div>
+  );
+}
 
 
+export default function App() {
+  const [center] = useState(environment.center);
+  const [zoom] = useState(environment.zoom);
+
+  return (
+    <div className="App">
+      <header>Hello</header>
+      <main>
+        <MapContainer center={center} zoom={zoom} />
+      </main>
+    </div>
+  );
+}
+
+
+//
+
+const features = [
+  {
+    id: 1,
+    layer: 'build',
+    geometry: { type: "Polygon", coordinates: [] }
+  },
+  {
+    id: 2,
+    layer: 'build',
+    geometry: { type: "Polygon", coordinates: [] }
+  },
+  {
+    id: 3,
+    layer: 'build',
+    geometry: { type: "Polygon", coordinates: [] }
+  },
+  {
+    id: 4,
+    layer: 'build',
+    geometry: { type: "Polygon", coordinates: [] }
+  },
+];
+
+const store = {
+  build: {
+    1: {},
+    2: {}
+  },
+  selectedBuild: 1
+}
