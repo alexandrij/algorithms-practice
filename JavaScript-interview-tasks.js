@@ -176,3 +176,47 @@ const store = {
   },
   selectedBuild: 1
 }
+
+
+// 2. Есть два сортированных массива с числами.
+// Нужно написать функцию, которая возвращает новый массив,
+// содержащий элементы, которые встречаются в обоих массивах.
+
+function findEqualElements (arr1, arr2) {
+  let result = [];
+  let obj = {};
+  arr1.forEach(el => {
+    obj[el] = obj[el] ? obj[el] + 1 : 1;
+  })
+  arr2.forEach(el => {
+    if(obj[el]){
+      result.push(el);
+      obj[el] = obj[el] - 1;
+    }
+  })
+  return result;
+}
+
+
+// Примеры
+console.log(findEqualElements([0, 1, 2, 3], [0, 2])); // => [0, 2]
+console.log(findEqualElements([2], [1, 2, 3])); // => [2]
+console.log(findEqualElements([1, 2, 2, 3], [2, 2, 2, 2, 4, 4, 4, 4])); // => [2, 2]
+
+
+
+
+
+2.
+
+const compose = (...args) => {
+
+}
+
+const square = (x) => x * x;
+const times2 = (x) => x * 2;
+const sum = (a, b) => a + b;
+
+console.log(compose(square, times2)(2) === square(times2(2)));
+console.log(compose(square, times2, sum)(3, 4) === square(times2(sum(3, 4))));
+
