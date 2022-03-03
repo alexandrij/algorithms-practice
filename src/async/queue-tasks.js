@@ -12,11 +12,11 @@ class QueueTasks {
     this.#callback = callback;
   }
 
-  queue(task) {
+  enqueue(task) {
     this.#queue.push(task);
   }
 
-  qequeue() {
+  dequeue() {
     return this.#queue.shift();
   }
 
@@ -25,7 +25,7 @@ class QueueTasks {
     for (let i = 0; i < this.#limit; i++) {
       processes.push((async () => {
         let task;
-        while (task = this.qequeue()) {
+        while (task = this.dequeue()) {
           await task();
         }
       })())
@@ -49,8 +49,8 @@ const queueTasks = new QueueTasks(2, () => {
   console.log('tasks finish')
 });
 
-for (let i = 0; i < 30; i++) {
-  queueTasks.queue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
+for (let i = 0; i < 100; i++) {
+  queueTasks.enqueue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
 }
 
 const start = Date.now();
