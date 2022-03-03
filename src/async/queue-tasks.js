@@ -30,7 +30,7 @@ class QueueTasks {
         }
       })())
     }
-    Promise.all(processes).finally(() => {
+    return Promise.all(processes).finally(() => {
       if (typeof this.#callback === 'function') {
         this.#callback();
       }
@@ -48,7 +48,12 @@ const fakeFetch = (val, time = 100) => {
 const queueTasks = new QueueTasks(2, () => {
   console.log('tasks finish')
 });
+
 for (let i = 0; i < 30; i++) {
   queueTasks.queue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
 }
-queueTasks.loop();
+
+const start = Date.now();
+queueTasks.loop().finally(() => {
+  console.log('time ', (Date.now() - start) / 1000)
+})
