@@ -22,7 +22,7 @@ class QueueTasks {
 
   loop() {
     const processes = [];
-    for (let i = 0; i < this.#limitParallel; i++) {
+    for (let i = 0; i < this.#limit; i++) {
       processes.push((async () => {
         let task;
         while (task = this.qequeue()) {
@@ -30,7 +30,7 @@ class QueueTasks {
         }
       })())
     }
-    Promise.allSettled(processes).then(() => {
+    Promise.all(processes).finally(() => {
       if (typeof this.#callback === 'function') {
         this.#callback();
       }
@@ -48,10 +48,7 @@ const fakeFetch = (val, time = 100) => {
 const queueTasks = new QueueTasks(2, () => {
   console.log('tasks finish')
 });
-queueTasks.queue(() => fakeFetch(1, 100).then((res) => console.log('fetch: ', res)));
-queueTasks.queue(() => fakeFetch(2, 500).then((res) => console.log('fetch: ', res)));
-queueTasks.queue(() => fakeFetch(3, 200).then((res) => console.log('fetch: ', res)));
-queueTasks.queue(() => fakeFetch(4, 600).then((res) => console.log('fetch: ', res)));
-queueTasks.queue(() => fakeFetch(5, 100).then((res) => console.log('fetch: ', res)));
-
+for (let i = 0; i < 30; i++) {
+  queueTasks.queue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
+}
 queueTasks.loop();
