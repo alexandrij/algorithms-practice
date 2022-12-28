@@ -22,7 +22,7 @@ describe(`Factorial`, () => {
   });
 
   it(`Факториал большого положительного числа: factorial(1000000)`, () => {
-    expect(factorial(1000000)).toBePositiveInfinity();
+    expect(factorial(1000000)).toBe(Number.POSITIVE_INFINITY);
   });
 
   it(`Ошибка вычисления факториала не целого числа, пример 5.3, "df", [], null,undefined:`, () => {
