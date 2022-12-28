@@ -1,6 +1,6 @@
 const maxArea = (height) => {
   if (height.length < 2) {
-    throw new Error("the number of height must be more than 2");
+    throw new Error('the number of height must be more than 2');
   }
 
   let i = 0;
@@ -58,6 +58,4 @@ console.log(maxArea([1, 1])); // 1
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])); // 49
 console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 2])); // 40
 console.log(maxArea([1, 8, 6, 100, 100, 4, 8, 3, 2])); // 100
-console.log(
-  maxArea([1, 8, 6, 10, 10, 4, 8, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
-); // 18
+console.log(maxArea([1, 8, 6, 10, 10, 4, 8, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])); // 18
