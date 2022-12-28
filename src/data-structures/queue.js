@@ -11,19 +11,19 @@
  */
 
 const Queue = function () {
-    this.collection = [];
+  this.collection = [];
 };
 
 Queue.prototype.enqueue = function (value) {
-    this.collection.push(value);
+  this.collection.push(value);
 };
 
 Queue.prototype.dequeue = function () {
-    return this.collection.shift();
+  return this.collection.shift();
 };
 
 Queue.prototype.size = function () {
-    return this.collection.length;
-}
+  return this.collection.length;
+};
 
 export { Queue };

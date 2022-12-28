@@ -956,7 +956,7 @@
     <p>
     Пример конфига в babel.config.js:
 
-      module.exports = function (api) {
+      export const  function (api) {
         api.cache(true);
 
         const presets = [ ... ];

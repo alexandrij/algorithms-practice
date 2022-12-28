@@ -1,66 +1,67 @@
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 .container--theme-gray {
-    border: 1px solid #cccccc;
+  border: 1px solid #cccccc;
 }
 
 .container--theme-dark {
-    border: 1px solid #333333;
+  border: 1px solid #333333;
 }
 
 .root {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-    height: 100px;
+  height: 100px;
 }
 
 .main {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .nav {
-    width: 200px;
+  width: 200px;
 }
 
 .content {
-    flex: 1;
-    overflow: auto;
+  flex: 1;
+  overflow: auto;
 }
 
 .footer {
-    height: 30px;
+  height: 30px;
 }
 
 .test-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .test-grid > div {
-    background-color: #ffaaaa;
-    min-width: 300px;
-    height: 300px;
-    margin: 10px;
-    flex: 1 0 auto;
+  background-color: #ffaaaa;
+  min-width: 300px;
+  height: 300px;
+  margin: 10px;
+  flex: 1 0 auto;
 }

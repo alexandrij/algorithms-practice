@@ -3,28 +3,26 @@
 
 /**
  * 3 * 2 * 1 | 0, 1 <-> 2
- * 
+ *
  * // abc: ab c: abc, cab; ba c: bac, cba; bc a: bca, abc
- * 
+ *
  * abc:
  * ab ba c
- * 
+ *
  * abc
  * bac
  * cab
  * cba
- * 
+ *
  * abc <-> acb: 1 <-> 2
  * ac ca b
- * 
+ *
  * acb
  * cab +
  * bac +
  * bca
- * 
+ *
  */
-
-
 
 /**
  * 4 * 3 * 2 * 1 | 0, 1 <-> 2, 2 <->3
@@ -70,35 +68,36 @@
  *
  */
 
- function swap(arr, a, b) {
-    let temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
+function swap(arr, a, b) {
+  let temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
 }
 
 const permutation = (arr, start) => {
-    if (arr.length < 2) { return arr; }
+  if (arr.length < 2) {
+    return arr;
+  }
 
-    const len = arr.length;
-    let res = [];
+  const len = arr.length;
+  let res = [];
 
-    start = typeof start === 'number' ? start : 0;
+  start = typeof start === 'number' ? start : 0;
 
-    if (start >= len) {
-        return [];
+  if (start >= len) {
+    return [];
+  }
+
+  for (let i = start; i < len; i++) {
+    if (i !== start) res.push(arr.join(''));
+
+    res = res.concat(permutation(arr, start + 1));
+
+    if (i < len - 1) {
+      swap(arr, start, i + 1);
     }
-
-    for (let i = start; i < len; i++) {
-        if (i !== start)
-            res.push(arr.join(''));
-
-        res = res.concat(permutation(arr, start + 1));
-        
-        if (i < (len-1) ) {
-            swap(arr, start, i+1);
-        }
-    }
-    return res;
+  }
+  return res;
 };
 
 console.log(permutation());

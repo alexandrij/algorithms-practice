@@ -1,7 +1,10 @@
 const palindrome = (word) => {
-    const pureWord = word.toLowerCase().split('').filter((s) => /[a-zа-я0-9]/.test(s));
-    return pureWord.join('') === pureWord.reverse().join('');
-}
+  const pureWord = word
+    .toLowerCase()
+    .split('')
+    .filter((s) => /[a-zа-я0-9]/.test(s));
+  return pureWord.join('') === pureWord.reverse().join('');
+};
 
 console.log(palindrome('Кони, топот, инок,'));
 console.log(palindrome('Идем, молод, долом меди.'));

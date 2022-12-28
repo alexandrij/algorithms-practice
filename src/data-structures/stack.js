@@ -10,26 +10,26 @@
  * ╚═══════════╩═════════╩══════════════╝
  */
 const Stack = function () {
-    this.count = 0;
-    this.storage = {};
+  this.count = 0;
+  this.storage = {};
 };
 
 Stack.prototype.push = function (value) {
-    this.storage[this.count] = value;
-    this.count++;
+  this.storage[this.count] = value;
+  this.count++;
 };
 
 Stack.prototype.pop = function () {
-    if (this.count === 0) {
-        return undefined;
-    }
-    this.count--;
-    var value = this.storage[this.count];
-    delete this.storage[this.count];
-    return value;
+  if (this.count === 0) {
+    return undefined;
+  }
+  this.count--;
+  var value = this.storage[this.count];
+  delete this.storage[this.count];
+  return value;
 };
 
 Stack.prototype.size = function () {
-    return this.count;
-}
+  return this.count;
+};
 export { Stack };

@@ -1,130 +1,132 @@
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.Header, .Main, .Footer {
-    border-top: #cccccc solid 1px;
-    border-bottom: #cccccc solid 1px;
+.Header,
+.Main,
+.Footer {
+  border-top: #cccccc solid 1px;
+  border-bottom: #cccccc solid 1px;
 }
 
 .Header {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Main {
-    flex: 1;
+  flex: 1;
 }
 
 .Footer {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Button {
-    display: inline-flex;
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 10px;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    user-select: none;
-    overflow: hidden;
-    line-height: 36px;
-    background-color: #444040;
-    cursor: default;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 10px;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  user-select: none;
+  overflow: hidden;
+  line-height: 36px;
+  background-color: #444040;
+  cursor: default;
 
-    color: #fff;
-    font-size: 13px;
+  color: #fff;
+  font-size: 13px;
 
-    transition: transform .1s ease-out,color .15s linear,-webkit-transform .1s ease-out;
-    transform: scale(1);
+  transition: transform 0.1s ease-out, color 0.15s linear,
+    -webkit-transform 0.1s ease-out;
+  transform: scale(1);
 }
 .Button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .Carousel {
-    width: 100%;
-    background-color: #24201e;
-    color: #999;
+  width: 100%;
+  background-color: #24201e;
+  color: #999;
 }
 
 .Carousel-Header {
-    padding: 27px 20px 4px 116px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  padding: 27px 20px 4px 116px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .Carousel-Header-title {
-    font-size: 24px;
-    color: #ffffff;
-    line-height: 32px;
-    margin-right: 36px;
-    margin-bottom: 15px;
+  font-size: 24px;
+  color: #ffffff;
+  line-height: 32px;
+  margin-right: 36px;
+  margin-bottom: 15px;
 }
 
 .Carousel-Header-filters {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .Scroller {
-    position: relative;
+  position: relative;
 }
 
 .Scroller-Container {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .Scroller-Wrap {
-    position: relative;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 20px 0 0 116px;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 20px 0 0 116px;
 }
 
 .Showcase-Item {
-    display: inline-block;
-    margin: 0 16px 26px 0;
-    white-space: normal;
+  display: inline-block;
+  margin: 0 16px 26px 0;
+  white-space: normal;
 }
 .Showcase-Title {
-    max-height: 54px;
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 18px;
-    color: #ccc;
+  max-height: 54px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  color: #ccc;
 }
 .Showcase-Hint {
-    max-height: 45px;
-    margin-top: 5px;
-    font-size: 12px;
-    line-height: 15px;
-    color: #999;
+  max-height: 45px;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #999;
 }
 
 .Thumb {
-    width: 168px;
-    height: 252px;
-    background-color: rgb(2, 11, 16);
+  width: 168px;
+  height: 252px;
+  background-color: rgb(2, 11, 16);
 }
-
-

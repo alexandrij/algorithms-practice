@@ -8,7 +8,7 @@
  */
 
 var f = function (a) {
-    console.log(a + this.b)
+  console.log(a + this.b);
 };
 
 // затормозить функцию до одного раза в 1000 мс
@@ -26,27 +26,27 @@ f1000(5); // (тормозим, не прошло 1000 мс)
 // выведет 3 call, промежуточное значение 2 call игнорируется
 
 function throttle(fn, delay, ctx) {
-    let lastCtx;
-    let lastArgs;
-    let trottled = false;
+  let lastCtx;
+  let lastArgs;
+  let trottled = false;
 
-    return (...args) => {
-        if (trottled) {
-            lastCtx = ctx;
-            lastArgs = args;
-            return;
-        }
-
-        fn.call(ctx, ...args);
-        trottled = true;
-
-        setTimeout(() => {
-            trottled = false;
-            if (lastArgs) {
-                fn.call(lastCtx, ...lastArgs);
-                lastArgs = null;
-                lastCtx = null;
-            }
-        }, delay);
+  return (...args) => {
+    if (trottled) {
+      lastCtx = ctx;
+      lastArgs = args;
+      return;
     }
+
+    fn.call(ctx, ...args);
+    trottled = true;
+
+    setTimeout(() => {
+      trottled = false;
+      if (lastArgs) {
+        fn.call(lastCtx, ...lastArgs);
+        lastArgs = null;
+        lastCtx = null;
+      }
+    }, delay);
+  };
 }

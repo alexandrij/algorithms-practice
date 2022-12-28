@@ -4,25 +4,23 @@
  */
 
 const isPalindrome = (x) => {
-    let i = 0;
-    let reverse = 0;
-    while (x >= reverse) {
-        let rem = x % 10;
-        reverse = reverse * 10 + rem;
+  let i = 0;
+  let reverse = 0;
+  while (x >= reverse) {
+    let rem = x % 10;
+    reverse = reverse * 10 + rem;
 
-        if (i % 2) {
-            if (reverse === x)
-                break;
-            x = (x - rem) / 10;
-        } else if ( x > 9) {
-            x = (x - rem) / 10;
-            if (reverse === x)
-                break;
-        }
-        i++;
+    if (i % 2) {
+      if (reverse === x) break;
+      x = (x - rem) / 10;
+    } else if (x > 9) {
+      x = (x - rem) / 10;
+      if (reverse === x) break;
     }
-    return x === reverse;
-}
+    i++;
+  }
+  return x === reverse;
+};
 
 console.log(isPalindrome(121)); // true
 console.log(isPalindrome(220)); // false

@@ -1,38 +1,35 @@
 // Конкуретное выполнение задач
 
 class QueueTasks {
-
-  #queue = [];
-  #limit = 1;
-  #callback;
-
   constructor(limitConcurrency, callback) {
-    this.#queue = [];
-    this.#limit = limitConcurrency;
-    this.#callback = callback;
+    this.queue = [];
+    this.limit = limitConcurrency;
+    this.callback = callback;
   }
 
   enqueue(task) {
-    this.#queue.push(task);
+    this.queue.push(task);
   }
 
   dequeue() {
-    return this.#queue.shift();
+    return this.queue.shift();
   }
 
   loop() {
     const processes = [];
-    for (let i = 0; i < this.#limit; i++) {
-      processes.push((async () => {
-        let task;
-        while (task = this.dequeue()) {
-          await task();
-        }
-      })())
+    for (let i = 0; i < this.limit; i++) {
+      processes.push(
+        (async () => {
+          let task;
+          while ((task = this.dequeue())) {
+            await task();
+          }
+        })(),
+      );
     }
     return Promise.all(processes).finally(() => {
-      if (typeof this.#callback === 'function') {
-        this.#callback();
+      if (typeof this.callback === 'function') {
+        this.callback();
       }
     });
   }
@@ -42,18 +39,22 @@ const fakeFetch = (val, time = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(val);
-    }, time)
-  })
-}
+    }, time);
+  });
+};
 const queueTasks = new QueueTasks(2, () => {
-  console.log('tasks finish')
+  console.log('tasks finish');
 });
 
 for (let i = 0; i < 100; i++) {
-  queueTasks.enqueue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
+  queueTasks.enqueue(() =>
+    fakeFetch(i, Math.random() * 1000).then((res) =>
+      console.log('fetch: ', res),
+    ),
+  );
 }
 
 const start = Date.now();
 queueTasks.loop().finally(() => {
-  console.log('time ', (Date.now() - start) / 1000)
-})
+  console.log('time ', (Date.now() - start) / 1000);
+});

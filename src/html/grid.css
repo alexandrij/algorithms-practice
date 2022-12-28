@@ -1,73 +1,75 @@
-html, body {
-    height: 100%;
+html,
+body {
+  height: 100%;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 body > * {
-    border: solid 1px #cccccc;
+  border: solid 1px #cccccc;
 }
 
 @media screen and (min-width: 520px) {
-    body {
-        display: grid;
-        grid-template-rows: 100px 1fr 30px;
-        grid-template-columns: 200px 1fr 200px;
-        grid-template-areas: "header     header header"
-                             "left-aside main   right-aside"
-                             "footer     footer footer"
-    }
+  body {
+    display: grid;
+    grid-template-rows: 100px 1fr 30px;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas:
+      "header     header header"
+      "left-aside main   right-aside"
+      "footer     footer footer";
+  }
 
-    .app-header {
-        grid-area: header;
-    }
+  .app-header {
+    grid-area: header;
+  }
 
-    .app-main {
-        grid-area: main;
-    }
+  .app-main {
+    grid-area: main;
+  }
 
-    .app-left-sidebar {
-        grid-area: left-aside;
-        padding: 10px;
-    }
+  .app-left-sidebar {
+    grid-area: left-aside;
+    padding: 10px;
+  }
 
-    .app-right-sidebar {
-        grid-area: right-aside;
-    }
+  .app-right-sidebar {
+    grid-area: right-aside;
+  }
 
-    .app-footer {
-        grid-area: footer;
-    }
+  .app-footer {
+    grid-area: footer;
+  }
 }
 
 @media screen and (max-width: 520px) {
-    body {
-        display: grid;
-        grid-template-rows: auto 1fr minmax(50px, auto) minmax(50px, auto) 30px;
-    }
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr minmax(50px, auto) minmax(50px, auto) 30px;
+  }
 
-    .app-header {
-        grid-row: 1;
-        display: grid;
-        justify-content: center;
-        align-items: center;
-    }
+  .app-header {
+    grid-row: 1;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .app-main {
-        grid-row: 2;
-    }
+  .app-main {
+    grid-row: 2;
+  }
 
-    .app-left-sidebar {
-        grid-row: 3;
-    }
+  .app-left-sidebar {
+    grid-row: 3;
+  }
 
-    .app-right-sidebar {
-        grid-row: 4;
-    }
+  .app-right-sidebar {
+    grid-row: 4;
+  }
 
-    .app-footer {
-        grid-row: 5;
-    }
+  .app-footer {
+    grid-row: 5;
+  }
 }
