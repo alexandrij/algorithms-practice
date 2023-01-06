@@ -15,11 +15,11 @@ export const Node = function (value) {
     next: null,
   };
 };
-export const Linked = function () {
+export const LinkedList = function () {
   this.head = null;
   this.length = 0;
 };
-Linked.prototype.add = function (value) {
+LinkedList.prototype.add = function (value) {
   const node = new Node(value);
   let cur = this.head;
 
@@ -35,7 +35,7 @@ Linked.prototype.add = function (value) {
   }
   return this;
 };
-Linked.prototype.getAt = function (pos) {
+LinkedList.prototype.getAt = function (pos) {
   let cur = this.head;
 
   while (cur) {
@@ -45,7 +45,7 @@ Linked.prototype.getAt = function (pos) {
     cur = cur.next;
   }
 };
-Linked.prototype.remove = function (value) {
+LinkedList.prototype.remove = function (value) {
   if (!this.head) {
     return;
   }
@@ -67,12 +67,12 @@ Linked.prototype.remove = function (value) {
   return this;
 };
 /**
- * linked = new Linked();
+ * linked = new LinkedList();
  * linked.add(1).add(2).add(3).add(4);
  *
  * 1,2,3,4 => 4,3,2,1
  */
-Linked.prototype.reverse = function () {
+LinkedList.prototype.reverse = function () {
   if (!this.head) {
     return;
   }
@@ -87,3 +87,10 @@ Linked.prototype.reverse = function () {
     cur = cur.next;
   }
 };
+
+export const createLinkedListFromArray = (arr) => {
+  return arr.reduce((list, el) => {
+    list.add(el);
+    return list;
+  }, new LinkedList())
+}
