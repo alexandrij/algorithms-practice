@@ -1,13 +1,11 @@
 const apply = (str, obj) => {
-  return str.replace(/\{[A-Za-z0-9.]+\}/g, (s) => {
-    return s
-      .substring(1, s.length - 1)
-      .split('.')
-      .reduce((obj, k) => {
-        return obj && k in obj ? obj[k] : '';
-      }, obj);
+  return str.replace(/{([A-Za-z.]+)}/g, (substring, path) => {
+    return path.split('.').reduce((cur, item) => {
+      return cur[item];
+    }, obj);
   });
 };
+
 const obj = {
   user: {
     name: 'Vasya',
