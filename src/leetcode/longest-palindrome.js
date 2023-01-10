@@ -2,10 +2,7 @@ const longestPalindrome = (s) => {
   const expandAroundCenter = (s, left, right) => {
     let res = '';
     while (left >= 0 && right < s.length && s[left] === s[right]) {
-      res =
-        left !== right
-          ? s.charAt(left) + res + s.charAt(right)
-          : s.charAt(left) + res;
+      res = left !== right ? s.charAt(left) + res + s.charAt(right) : s.charAt(left) + res;
       left--;
       right++;
     }

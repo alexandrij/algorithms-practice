@@ -2,22 +2,27 @@
   "name": "algorithms-practice",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "test": "jest ./src/**/*.spec.js",
-    "lint": "eslint ./src/**/*.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Alexandrij/algorithms-practice.git"
   },
-  "author": "",
+  "author": "adimitriev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Alexandrij/algorithms-practice/issues"
   },
   "homepage": "https://github.com/Alexandrij/algorithms-practice#readme",
+  "type": "module",
+  "scripts": {
+    "test": "jest ./src/**/*.spec.js",
+    "lint": "eslint ./src/**/*.js"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
   "dependencies": {
-    "esm": "^3.2.25",
     "node-fetch": "^2.6.7"
   },
   "devDependencies": {

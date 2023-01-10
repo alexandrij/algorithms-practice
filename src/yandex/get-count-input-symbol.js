@@ -1,3 +1,5 @@
+import readline from 'readline';
+
 const getCountInputSymbol = (a, b) => {
   const aSet = new Set(a);
   return b.split('').filter((s) => aSet.has(s)).length;
@@ -5,7 +7,6 @@ const getCountInputSymbol = (a, b) => {
 
 console.log(getCountInputSymbol('драгоценности', 'камни'));
 
-const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
 });

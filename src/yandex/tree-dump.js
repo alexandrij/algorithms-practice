@@ -1,9 +1,5 @@
 const dumpDFS = (node) => {
-  return !node
-    ? []
-    : [node.value].concat(
-        (node.children || []).flatMap((child) => dumpDFS(child)),
-      );
+  return !node ? [] : [node.value].concat((node.children || []).flatMap((child) => dumpDFS(child)));
 };
 
 const dumpBFS1 = (node) => {

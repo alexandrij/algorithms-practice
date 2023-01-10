@@ -9,9 +9,7 @@ export function binarySearch(arr, target, start, end) {
   }
 
   if (end - 1 === start) {
-    return Math.abs(arr[start] - target) < Math.abs(arr[end] - target)
-      ? arr[start]
-      : arr[end];
+    return Math.abs(arr[start] - target) < Math.abs(arr[end] - target) ? arr[start] : arr[end];
   }
   if (target > arr[middle]) return binarySearch(arr, target, middle, end);
   if (target < arr[middle]) return binarySearch(arr, target, start, middle);

@@ -1,6 +1,6 @@
 function ListNode(val, next) {
-  this.val = (val === undefined ? 0 : val)
-  this.next = (next === undefined ? null : next)
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
 function createList(head) {
@@ -45,7 +45,7 @@ const mergeTwoLists = (head1, head2) => {
   tail.next = node1 || node2;
 
   return head;
-}
+};
 
 console.log(mergeTwoLists(createList([1, 2, 4]), createList([1, 3, 4]))); // [1, 1, 2, 3, 4]
 console.log(mergeTwoLists(createList([1]), createList([1, 2, 3]))); // [1, 1, 2, 3, 4]

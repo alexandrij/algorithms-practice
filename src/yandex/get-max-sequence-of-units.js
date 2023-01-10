@@ -1,4 +1,5 @@
-const readline = require('readline');
+import readline from 'readline';
+
 const getSequenceOfUnits = (n) => {
   let best = 0;
   let cur = 0;

@@ -1,4 +1,4 @@
-let memoize = (fn) => {
+const memoize = (fn) => {
   const cached = new Map();
   return (...args) => {
     const arg = JSON.stringify(args);
@@ -11,6 +11,7 @@ let memoize = (fn) => {
     }
   };
 };
+
 const factorial = memoize((n) => {
   if (n <= 1) return 1;
   return n * factorial(n - 1);

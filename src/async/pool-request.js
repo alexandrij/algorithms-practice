@@ -1,79 +1,79 @@
-const fetch = require('node-fetch');
-
-async function poolRequest(urls, callback, limit = 5) {
-  urls = [...urls];
-
-  if (urls.length === 0) return;
-
-  while (urls.length > 0) {
-    callback(await Promise.all(urls.splice(0, limit).map((url) => fetch(url))));
-  }
-}
-
 const fakeFetch = async (url) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(url + new Date());
+      resolve(`fetched: ${url}`);
     }, 1000);
-  })
-}
+  });
+};
 
-async function asyncRequests(urls, callback, limit = 5) {
+export async function asyncRequests(urls, callback, limit = 5) {
   const asyncTasks = [];
   let results = [];
+  let j = 0;
 
   for (let i = 0; i < limit; i++) {
-    asyncTasks.push((async () => {
-      let url;
+    asyncTasks.push(
+      (async () => {
+        let url;
+        const taskResults = [];
 
-      while (url = urls.shift()) {
-        let res;
-        try {
-          res = {
-            status: 'fulfilled',
-            value: await fakeFetch(url)
-          };
-        } catch (e) {
-          res = {
-            status: 'rejected',
-            reason: e
+        while ((url = urls[j])) {
+          j++;
+
+          let res;
+          try {
+            res = {
+              status: 'fulfilled',
+              value: await fakeFetch(url),
+            };
+          } catch (e) {
+            res = {
+              status: 'rejected',
+              reason: e,
+            };
+          }
+          results.push(res);
+          taskResults.push(res);
+
+          if (results.length === limit) {
+            callback(results);
+            results = [];
           }
         }
-        results.push(res);
-        if (results.length === limit) {
-          callback(results);
-          results = [];
-        }
-      }
-    })());
+        return taskResults;
+      })(),
+    );
   }
 
-  await Promise.allSettled(asyncTasks);
+  const allresults = await Promise.all(asyncTasks);
 
   if (results.length > 0) {
     callback(results);
-    results = [];
   }
+
+  return allresults.flat();
 }
 
-const urls = [
-  'http://example-app/async/data/1.json',
-  'http://example-app/async/data/2.json',
-  'http://example-app/async/data/3.json',
-  'http://example-app/async/data/4.json',
-  'http://example-app/async/data/5.json',
-  'http://example-app/async/data/6.json',
-  'http://example-app/async/data/7.json',
-  'http://example-app/async/data/8.json',
-  'http://example-app/async/data/9.json',
-  'http://example-app/async/data/10.json',
-];
-
-asyncRequests(
-  [...urls],
-  (results) => {
-    console.log('----');
-    console.log(...results);
-  },
-  3,
-);
+// const urls = [
+//   'http://example-app/async/data/1.json',
+//   'http://example-app/async/data/2.json',
+//   'http://example-app/async/data/3.json',
+//   'http://example-app/async/data/4.json',
+//   'http://example-app/async/data/5.json',
+//   'http://example-app/async/data/6.json',
+//   'http://example-app/async/data/7.json',
+//   'http://example-app/async/data/8.json',
+//   'http://example-app/async/data/9.json',
+//   'http://example-app/async/data/10.json',
+// ];
+//
+// asyncRequests(
+//   urls,
+//   (results) => {
+//     console.log(results.length);
+//     console.log('----');
+//   },
+//   3,
+// ).then((results) => {
+//   console.log(results);
+// });

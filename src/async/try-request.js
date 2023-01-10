@@ -1,9 +1,7 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 const tryRequest = (request, n) => {
-  return request.catch((e) =>
-    --n > 0 ? tryRequest(request, n) : Promise.reject(e),
-  );
+  return request.catch((e) => (--n > 0 ? tryRequest(request, n) : Promise.reject(e)));
 };
 
 tryRequest(fetch('http://test.ru'), 3)
