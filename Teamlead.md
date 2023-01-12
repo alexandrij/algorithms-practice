@@ -21,6 +21,8 @@
 * Sentry - Мониторинг ошибок
 * Grafana - Визуализация данных логов
 
-## Доставка ошибок до Sentry / 
-
+## Доставка ошибок до Sentry
 ErrorBoundary -> fetch -> sentry - сервис
+
+## Доставка performance
+useLayoutEffect -> sendBeacon -> grafana - сервис
