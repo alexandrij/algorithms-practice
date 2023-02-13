@@ -18,20 +18,14 @@
  * }
  */
 
-async function transferSortedQuantums(quantums, limit, start) {
+async function transferSortedQuantums(quantums, limit) {
   if (quantums.length < 1) {
     return [];
   }
-  if (start >= quantums.length) {
-    return [];
-  }
 
-  start = typeof start === 'number' ? start : 0;
-  const end = typeof limit === 'number' ? Math.min(start + limit, quantums.length) : quantums.length;
-
+  let n = typeof limit === 'number' ? Math.min(limit, quantums.length) : quantums.length;
   const tasks = [];
-  for (let i = start; i < end; i++) {
-    const quantum = quantums[i];
+  for (let quantum; (quantum = quantums.pop()) && n > 0; n--) {
     tasks.push(
       quantum.transfer().then((data) => {
         return !data ? [quantum.id] : transferQuantums(data, limit);
@@ -39,17 +33,16 @@ async function transferSortedQuantums(quantums, limit, start) {
     );
   }
   const results = await Promise.all(tasks).then((res) => res.flat());
-  return results.concat(await transferSortedQuantums(quantums, limit, start + limit));
+  return results.concat(await transferSortedQuantums(quantums, limit));
 }
 
-async function transferQuantums(quantums, limit, start) {
+async function transferQuantums(quantums, limit) {
   if (quantums.length < 1) {
     return [];
   }
   return transferSortedQuantums(
-    quantums.sort((a, b) => b.priority - a.priority),
+    quantums.sort((a, b) => a.priority - b.priority),
     limit,
-    start,
   );
 }
 
