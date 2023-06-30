@@ -11,50 +11,66 @@
  * calc('1 b x + c -')    // Error in Operands
  */
 
-const calc = (str) => {
-  const execOperation = (operand1, operand2, operation) => {
-    switch (operation) {
-      case '+':
-        return operand1 + operand2;
-      case '-':
-        return operand1 - operand2;
-      case '*':
-        return operand1 * operand2;
-      case '/':
-        return operand1 / operand2;
-    }
-  };
-  return str
-    .split(' ')
-    .reduce((res, el) => {
-      if (/^-?[0-9]+$/.test(el)) {
-        res.push(parseFloat(el));
-      } else if (/[*+-]/.test(el)) {
-        const b = res.pop();
-        const a = res.pop();
+function isOperator(s) {
+  return s === '+' || s === '-' || s === '*' || s === '/';
+}
 
-        if (typeof a !== 'number' || typeof b !== 'number') {
-          throw new Error('Error in Syntax');
-        }
-        res.push(execOperation(a, b, el));
-      } else {
-        throw new Error('Error in Operands');
-      }
-      return res;
-    }, [])
-    .reduce((res, el, i) => {
-      if (i > 0) throw new SyntaxError('Error in Syntax');
-      return el;
-    });
-};
+function isOperand(s) {
+  return !Number.isNaN(parseFloat(s));
+}
+
+function operate(a, b, op) {
+  if (typeof a !== 'number') {
+    throw new SyntaxError('Error in Syntax');
+  }
+  if (typeof b !== 'number') {
+    throw new SyntaxError('Error in Syntax');
+  }
+
+  switch (op) {
+    case '*': {
+      return a * b;
+    }
+    case '/': {
+      return a / b;
+    }
+    case '+': {
+      return a + b;
+    }
+    case '-': {
+      return a - b;
+    }
+  }
+
+  throw new SyntaxError('Error in Syntax');
+}
+
+function calc(str) {
+  const res = [];
+  for (const s of str.split(' ')) {
+    if (isOperator(s)) {
+      const b = res.pop();
+      const a = res.pop();
+      res.push(operate(a, b, s));
+    } else if (isOperand(s)) {
+      res.push(parseFloat(s));
+    } else {
+      throw new SyntaxError('Error in Operands');
+    }
+  }
+  if (res.length !== 1) {
+    throw new SyntaxError('Error in Syntax');
+  }
+  return res.pop();
+}
 
 console.log(calc('7 2 * 3 +')); // 7 * 2 + 3 = 17
 console.log(calc('7 2 3 * -')); // 7 - (2 * 3) = 1
-console.log(calc('7 2 3 1 + * -')); // 7 - 2 * (3 - 1) = -1
-
-console.log(calc('11 -12 -')); // ??
-console.log(calc('7 2 3 1 * - - 3 5 + -')); // ??
-
+console.log(calc('7 2 3 1 + * -')); // 7 - 2 * (3 + 1) = -1
+console.log(calc('11 -12 -')); // 11 - -12 = 23
+console.log(calc('7 2 3 1 * - - 3 5 + -')); // 7 - (2 - 3 * 1) - 3 + 5 = 0
+console.log(calc('1')); // 1
+console.log(calc('')); // 1
 console.log(calc('1 1 + +')); // Error in Syntax
-// console.log(calc('1 2 2 *'));      // Error in Syntax
-// console.log(calc('1 b x + c -'));    // Error in Operands
+console.log(calc('1 2 2 *')); // Error in Syntax
+console.log(calc('1 b x + c - ')); // Error in Sytax
