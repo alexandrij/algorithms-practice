@@ -346,6 +346,15 @@
 </details>
 
 <details>
+<summary>Причины ререндера в React?</summary>
+<div>
+Существует 4 причины, по которым компонент подвергается ререндерингу: изменение состояния, ререндеринг родительского компонента, изменение контекста и изменение хука.
+  <img src='https://cdn-images-1.medium.com/max/1600/1*cPwvUhZrnB1dtZnjBEfXfA.png' />
+  <p><i>Источник: <a href ="https://habr.com/ru/companies/timeweb/articles/684718/">React: полное руководство по повторному рендерингу</a></i></p>
+</div>
+</details>
+
+<details>
 <summary>Что такое Context в React и для чего он используется?</summary>
 <div>
   <br />
