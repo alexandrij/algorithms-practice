@@ -1,11 +1,10 @@
 import { Queue } from '../data-structures/queue.js';
 
 const streams = [
-  '/filtered_cloud',
   '/prediction/visualization/text_view_facing',
-  '/control_visualization/target_path_vel/path',
-  '/control_visualization/trajectory_vel/path',
-  '/control_visualization/wheel_direction/path',
+  '/visualizations/taget-path-vel/path',
+  '/visualizations/trajectory_vel/path',
+  '/visualizations/wheel_direction/path',
   '/perception/cloud_obstacles/visualization/cloud_clusters_visualization/path',
   '/planning/visualization/maneuvers/path',
   '/prediction/visualization/distance_circles/path',
@@ -14,10 +13,6 @@ const streams = [
   '/prediction/visualization/mesh',
   '/prediction/visualization/following/path',
   '/planning/visualization/stop_line/path',
-  '/gnss_in_map',
-  '/gnss_in_map/trail',
-  '/gnss_in_map/covariance',
-  '/pose',
   '/visualizations/tracked_3d_objects/B/text_view_facing',
   '/visualizations/tracked_3d_objects/Bc/text_view_facing',
   '/visualizations/tracked_3d_objects/P/text_view_facing',
@@ -58,7 +53,6 @@ const streams = [
   '/diagnostics/ram',
   '/diagnostics/planning',
 ];
-const len = 100000;
 
 function benchmarkQueueArray(len) {
   const queue = new Array(len);
@@ -106,11 +100,15 @@ function benchmarkQueueMap(len) {
   return performance.now() - t1;
 }
 
-for (const n of [1000, 10000, 15000, 20000, 50000, 100000]) {
-  console.group(`*** benchmark ${n} ***`);
-  console.info(`queue array: array.shift():`, benchmarkQueueArray(n));
-  console.info(`queue linked-list: queue.dequeue()`, benchmarkQueue(n));
-  console.info(`queue map: iterator.next()`, benchmarkQueueMap(n));
+for (let i = 0; i < 5; i++) {
+  console.group(`benchmark queue: ${i}`);
+  for (const n of [1000, 10000, 15000, 20000, 50000, 100000]) {
+    console.group(`*** benchmark ${n} ***`);
+    console.info(`Очередь на основе массива: array.shift(): ${benchmarkQueueArray(n).toFixed(2)}мс.`);
+    console.info(`Очередь на основе LinkedList: queue.dequeue(): ${benchmarkQueue(n).toFixed(2)}мс.`);
+    console.info(`Очередь на основе Map: iterator.next(): ${benchmarkQueueMap(n).toFixed(2)}мс.`);
+    console.groupEnd();
+    console.info('\n');
+  }
   console.groupEnd();
-  console.info('\n');
 }
