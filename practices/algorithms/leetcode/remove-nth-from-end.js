@@ -1,6 +1,6 @@
 function ListNode(val, next) {
-  this.val = (val === undefined ? 0 : val)
-  this.next = (next === undefined ? null : next)
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
 }
 
 function createList(head) {
@@ -28,10 +28,10 @@ const removeNthFromEnd = (head, n) => {
   }
   end.next = end.next.next;
   return head;
-}
+};
 
-console.log(removeNthFromEnd(createList([1, 2, 3, 4, 5]), 2)) // [1,2,3,5]
-console.log(removeNthFromEnd(createList([1, 2, 3]), 1)) // [1, 3]
-console.log(removeNthFromEnd(createList([1, 2]), 2)) // [1, 3]
-console.log(removeNthFromEnd(createList([1]), 1)) // []
+console.log(removeNthFromEnd(createList([1, 2, 3, 4, 5]), 2)); // [1,2,3,5]
+console.log(removeNthFromEnd(createList([1, 2, 3]), 1)); // [1, 3]
+console.log(removeNthFromEnd(createList([1, 2]), 2)); // [1, 3]
+console.log(removeNthFromEnd(createList([1]), 1)); // []
 console.log(removeNthFromEnd(createList([1, 2, 3]), 4)); // []

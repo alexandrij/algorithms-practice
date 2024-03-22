@@ -47,11 +47,7 @@ const queueTasks = new QueueTasks(2, () => {
 });
 
 for (let i = 0; i < 100; i++) {
-  queueTasks.enqueue(() =>
-    fakeFetch(i, Math.random() * 1000).then((res) =>
-      console.log('fetch: ', res),
-    ),
-  );
+  queueTasks.enqueue(() => fakeFetch(i, Math.random() * 1000).then((res) => console.log('fetch: ', res)));
 }
 
 const start = Date.now();

@@ -1,21 +1,23 @@
 const digitalLetters = {
-  "1": [],
-  "2": "abc",
-  "3": "def",
-  "4": "ghi",
-  "5": "jkl",
-  "6": "mno",
-  "7": "pqrs",
-  "8": "tuv",
-  "9": "wxyz"
-}
+  1: [],
+  2: 'abc',
+  3: 'def',
+  4: 'ghi',
+  5: 'jkl',
+  6: 'mno',
+  7: 'pqrs',
+  8: 'tuv',
+  9: 'wxyz',
+};
 
 const letterCombinations = (digits) => {
   return digits.split('').reduce((acc, d) => {
     const letters = d in digitalLetters ? digitalLetters[d].split('') : [];
-    return acc.length === 0 ? letters : letters.reduce((join, s) => {
-      return join.concat(acc.map(a => a + s));
-    }, []);
+    return acc.length === 0
+      ? letters
+      : letters.reduce((join, s) => {
+          return join.concat(acc.map((a) => a + s));
+        }, []);
   }, []);
 
   // const output = [];
@@ -32,7 +34,7 @@ const letterCombinations = (digits) => {
   //   }
   // }
   // return output;
-}
+};
 
 console.log(letterCombinations('23')); // ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 console.log(letterCombinations('234')); // ["adg","ae","af","bd","be","bf","cd","ce","cf"]

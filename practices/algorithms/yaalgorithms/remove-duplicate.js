@@ -13,4 +13,4 @@ const removeDuplicate = (nums) => {
 
 console.log(removeDuplicate([2, 3, 4, 4, 5]));
 console.log(removeDuplicate([]));
-console.log(removeDuplicate([1,1,0]));
+console.log(removeDuplicate([1, 1, 0]));

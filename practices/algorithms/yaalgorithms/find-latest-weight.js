@@ -20,12 +20,12 @@ const findLatestWeight = (weights) => {
       }
     }
   }
-  return
+  return;
 };
 
-[1, 3, 2, 7, 9, 2][(1, 9, 1, 1, 1)];
-
-max1 = 1;
-max1 = 2;
-max2 = 3;
-max2;
+// [1, 3, 2, 7, 9, 2][(1, 9, 1, 1, 1)];
+//
+// max1 = 1;
+// max1 = 2;
+// max2 = 3;
+// max2;

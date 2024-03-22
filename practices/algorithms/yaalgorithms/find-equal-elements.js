@@ -45,6 +45,4 @@ console.log(findEqualElements([1, 2, 3], [2])); // => [2]
 console.log(findEqualElements([0, 1, 2, 3], [0, 2])); // => [2]
 console.log(findEqualElements([2], [1, 2, 3])); // => [2]
 console.log(findEqualElements([1, 2, 2, 3], [2, 2, 2, 2, 4, 4, 4, 4])); // => [2, 2]
-console.log(
-  findEqualElements([1, 2, 2, 3, 4, 4, 5, 6, 6], [2, 2, 2, 2, 4, 4, 4, 4]),
-); // => [2, 2]
+console.log(findEqualElements([1, 2, 2, 3, 4, 4, 5, 6, 6], [2, 2, 2, 2, 4, 4, 4, 4])); // => [2, 2]

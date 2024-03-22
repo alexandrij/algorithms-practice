@@ -1,8 +1,5 @@
 export function memoize(fn, resolver, expire) {
-  if (
-    typeof fn !== 'function' ||
-    (resolver && typeof resolver !== 'function')
-  ) {
+  if (typeof fn !== 'function' || (resolver && typeof resolver !== 'function')) {
     throw new TypeError(`the parameters of the required functions`);
   }
   const cached = new Map();

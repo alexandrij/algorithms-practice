@@ -6,10 +6,7 @@ const findMedianSortedArrays = (nums1, nums2) => {
   let j = 0;
   let minValue = -Math.pow(10, 6);
   while (i + j <= end) {
-    let best = Math.max(
-      nums1[i] !== undefined ? nums1[i] : minValue,
-      nums2[j] !== undefined ? nums2[j] : minValue,
-    );
+    let best = Math.max(nums1[i] !== undefined ? nums1[i] : minValue, nums2[j] !== undefined ? nums2[j] : minValue);
     while (nums1[i] !== undefined && nums1[i] < best && i + j <= end) {
       res.push(nums1[i]);
       i++;

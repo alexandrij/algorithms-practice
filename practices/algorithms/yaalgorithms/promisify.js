@@ -34,12 +34,15 @@ function promisify(api) {
     case '[object Function]': {
       return async function (...args) {
         return new Promise((resolve, reject) => {
-          api((error, result) => {
-            if (error) {
-              reject(error);
-            }
-            resolve(result);
-          }, ...args);
+          api(
+            (error, result) => {
+              if (error) {
+                reject(error);
+              }
+              resolve(result);
+            },
+            ...args,
+          );
         });
       };
     }

@@ -53,7 +53,5 @@ const getListNode = (arr) => {
 // );
 
 console.log(addTwoNumbers(getListNode([2, 4, 3]), getListNode([5, 6, 4]))); // Output: [7,0,8] Explanation: 342 + 465 = 807.)
-console.log(
-  addTwoNumbers(getListNode([9, 9, 9, 9, 9, 9, 9]), getListNode([9, 9, 9, 9])),
-); // Output: [8,9,9,9,0,0,0,1]));
+console.log(addTwoNumbers(getListNode([9, 9, 9, 9, 9, 9, 9]), getListNode([9, 9, 9, 9]))); // Output: [8,9,9,9,0,0,0,1]));
 console.log(addTwoNumbers(getListNode([]), getListNode([]))); // Output: []));
