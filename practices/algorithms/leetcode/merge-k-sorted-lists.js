@@ -1,4 +1,4 @@
-import { createSimpleList } from '../utils/linked-list.js';
+import { createLinkedListFromArray } from '../../data-structures/linked.js';
 
 const mergeTwoLists = (head1, head2) => {
   if (!head1) {
@@ -53,11 +53,11 @@ const mergeKSortedLists = (lists) => {
 
 console.log(
   mergeKSortedLists([
-    createSimpleList([1, 5, 6, 10]),
-    createSimpleList([-1, 2, 4, 6]),
-    createSimpleList([-3, -1, 10, 11]),
-    createSimpleList([-2, 1, 3, 6]),
+    createLinkedListFromArray([1, 5, 6, 10]),
+    createLinkedListFromArray([-1, 2, 4, 6]),
+    createLinkedListFromArray([-3, -1, 10, 11]),
+    createLinkedListFromArray([-2, 1, 3, 6]),
   ]),
 ); // [-3, -2, -1, -1, 1, 1, 2, 3, 4, 5, 6, 6, 6, 10, 10, 11]
 console.log(mergeKSortedLists([])); // []
-console.log(mergeKSortedLists([createSimpleList([1, 2]), createSimpleList([2])])); // [1, 2, 2]
+console.log(mergeKSortedLists([createLinkedListFromArray([1, 2]), createLinkedListFromArray([2])])); // [1, 2, 2]

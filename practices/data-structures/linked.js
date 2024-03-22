@@ -89,8 +89,7 @@ LinkedList.prototype.reverse = function () {
 };
 
 export const createLinkedListFromArray = (arr) => {
-  return arr.reduce((list, el) => {
-    list.add(el);
-    return list;
-  }, new LinkedList())
-}
+  return arr.reduceRight((head, val) => {
+    return new Node(val, head);
+  }, null);
+};

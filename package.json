@@ -14,8 +14,8 @@
   "homepage": "https://github.com/Alexandrij/algorithms-practice#readme",
   "type": "module",
   "scripts": {
-    "test": "jest ./src/**/*.spec.js",
-    "lint": "eslint ./src/**/*.js"
+    "test": "jest algorithms-practice/**/*.spec.js",
+    "lint": "eslint algorithms-practice/**/*.js"
   },
   "browserslist": [
     "> 1%",

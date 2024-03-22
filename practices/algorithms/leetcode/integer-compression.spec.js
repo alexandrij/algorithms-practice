@@ -1,4 +1,4 @@
-import { integerCompression } from './integer-compression';
+import { integerCompression } from './integer-compression.js';
 
 describe(`algoritms: integer compression`, () => {
   it(`сжатие массива чисел: [0, 1, 2, 3, 4, 7, 8, 10]`, () => {

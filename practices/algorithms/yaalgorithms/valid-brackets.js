@@ -1,3 +1,5 @@
+// Используем стек для хранения скобок
+
 function isValidBrackets(str) {
   const brackets = [];
   let isValid = true;

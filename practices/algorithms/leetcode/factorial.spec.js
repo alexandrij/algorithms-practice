@@ -1,4 +1,4 @@
-import { factorial } from './factorial';
+import { factorial } from './factorial.js';
 
 describe(`algoritms: factorial`, () => {
   it(`факторил отрицательного числа: factorial(-3)`, () => {
