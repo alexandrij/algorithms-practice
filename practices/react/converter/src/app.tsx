@@ -1,5 +1,4 @@
 import { FC, Reducer, useReducer } from 'react';
-import { act } from 'react-dom/test-utils';
 
 const RUB_TO_USD = 1 / 150;
 const USD_TO_RUB = 75;
@@ -33,7 +32,7 @@ const reducer: Reducer<State, Action> = (state, action) => {
       return {
         ...state,
         sourceVal: Number(action.payload),
-        targetVal: Number(action.payload) * (state.converter === 'USD_TO_RUB' ? 75 : 1 / 150),
+        targetVal: Math.round(Number(action.payload) * (state.converter === 'USD_TO_RUB' ? 75 : 1 / 150) * 100) / 100,
       };
     }
     case 'INVERSE': {
@@ -83,7 +82,7 @@ const App: FC = () => {
       </button>
       <div>
         <label>{state.targetTitle}</label>
-        <input type="number" value={state.targetVal} />
+        <input type="number" value={state.targetVal} readOnly />
       </div>
     </div>
   );

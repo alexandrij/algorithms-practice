@@ -1,3 +1,9 @@
+/**
+ * Игра в города. Расположить города так, чтобы каждое следующее
+ * название начиналось с той буквы, на которую заканчивалось
+ * предыдущее название. Если нет такого названия, то на п
+ * редпоследнюю букву и так далее.
+ */
 const cities = [
   'New York',
   'Kansas City',
@@ -48,22 +54,18 @@ function swap(arr, i, j) {
   arr[j] = temp;
 }
 
-function makeCitites(cities) {
-  let curIdx = 0;
-  let curCity = cities[curIdx];
-  curIdx++;
+export function makeCities(cities) {
+  topLoop: for (let i = 0; i < cities.length; i++) {
+    const city = cities[i];
 
-  for (let i = curCity.length - 1; i >= 0; i--) {
-    const lastSym = curCity.charAt(i).toLowerCase();
+    for (let j = city.length - 1; j >= 0; j--) {
+      const sym = city[j];
 
-    for (let j = curIdx; j < cities.length; j++) {
-      if (lastSym === cities[j].charAt(0).toLowerCase()) {
-        curCity = cities[j];
-        swap(cities, curIdx, j);
-        curIdx++;
-        i = curCity.length;
-
-        break;
+      for (let ii = i + 1; ii < cities.length; ii++) {
+        if (sym.toLowerCase() === cities[ii].charAt(0).toLowerCase()) {
+          swap(cities, i + 1, ii);
+          continue topLoop;
+        }
       }
     }
   }
@@ -71,48 +73,4 @@ function makeCitites(cities) {
   return cities;
 }
 
-console.log(makeCitites(cities));
-
-// const sortedCities = [
-//   'New York',
-//   'Kansas City',
-//   'Tucson',
-//   'Nashville',
-//   'El Paso',
-//   'Oklahoma City',
-//   'Indianapolis',
-//   'San Diego',
-//   'Omaha',
-//   'Austin',
-//   'San Jose',
-//   'San Francisco',
-//   'Columbus',
-//   'San Antonio',
-//   'Albuquerque',
-//   'Raleigh',
-//   'Houston',
-//   'Seattle',
-//   'Las Vegas',
-//   'Sacramento',
-//   'Memphis',
-//   'Phoenix',
-//   'Portland',
-//   'Detroit',
-//   'Denver',
-//   'Dallas',
-//   'Atlanta',
-//   'Louisville',
-//   'Los Angeles',
-//   'Long Beach',
-//   'Chicago',
-//   'Charlotte',
-//   'Milwaukee',
-//   'Fresno',
-//   'Washington',
-//   'Mesa',
-//   'Jacksonville',
-//   'Philadelphia',
-//   'Baltimore',
-//   'Boston',
-//   'Fort Worth',
-// ];
+console.log(makeCities(cities));
