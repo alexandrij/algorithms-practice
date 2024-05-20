@@ -1,4 +1,4 @@
-import { FC, memo, useRef, useState } from 'react';
+import { FC, memo, useRef, useState, useEffect } from 'react';
 
 import classes from './app.module.css';
 
@@ -44,6 +44,20 @@ let revision = 1;
 const App: FC = () => {
   const [id, nextId] = useState(1);
   const [messages, setMessages] = useState<Array<Message>>([]);
+
+  setInterval(() => {
+    setMessages((messages) => {
+      return [...messages, { id: Date.now(), text: Date.now() }];
+    });
+  }, 2000);
+
+  useEffect(() => {
+    console.log('useEffect Change', messages);
+
+    return () => {
+      console.log('useEffect unmount');
+    };
+  }, [messages.length]);
 
   console.log('App render. Revision ' + revision++);
 

@@ -1,4 +1,4 @@
-import { makeCities } from './make-cities.js';
+import { makeCities1, makeCities3 } from './make-cities.js';
 
 describe(`algoritms: make-cities`, () => {
   it(`сортировка городов`, () => {
@@ -53,13 +53,14 @@ describe(`algoritms: make-cities`, () => {
       'El Paso',
       'Oklahoma City',
       'Indianapolis',
-      'San Diego',
+      'San Antonio',
       'Omaha',
       'Austin',
+      'San Diego',
+      'Dallas',
       'San Jose',
       'San Francisco',
-      'Columbus',
-      'San Antonio',
+      'Chicago',
       'Albuquerque',
       'Raleigh',
       'Houston',
@@ -68,27 +69,18 @@ describe(`algoritms: make-cities`, () => {
       'Sacramento',
       'Memphis',
       'Phoenix',
-      'Portland',
-      'Detroit',
-      'Denver',
-      'Dallas',
+      'Philadelphia',
       'Atlanta',
       'Louisville',
       'Los Angeles',
       'Long Beach',
-      'Chicago',
-      'Charlotte',
+      'Columbus',
+      'Boston',
+      'Baltimore',
       'Milwaukee',
       'Washington',
-      'Fresno',
-      'Fort Worth',
-      'Jacksonville',
-      'Philadelphia',
-      'Baltimore',
-      'Mesa',
-      'Boston',
     ];
-
-    expect(makeCities(sourceCities)).toEqual(expectedCities);
+    expect(makeCities3(sourceCities)).toEqual(expectedCities);
+    expect(makeCities1(sourceCities)).toEqual(expectedCities);
   });
 });

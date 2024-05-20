@@ -175,14 +175,14 @@ const secondSubscriber = (data) => console.log('second', data)
 store.subscribe(firstSubscriber)
 store.subscribe(secondSubscriber)
 
-store.data = {newKey: 'newString'}
+store.data = { newKey: 'newString' }
 
 // CONSOLE
 // first { newKey: 'newString' }
 // second { newKey: 'newString' }
 
 store.unsubscribe(firstSubscriber)
-store.data = {lastKey: 'lastKey'}
+store.data = { lastKey: 'lastKey' }
 
 // Решение
 
@@ -260,5 +260,115 @@ function memoize(fn, resolver = JSON.stringify, time) {
 
 }
 ```
+
+### 8. Конвертер курсов валют
+
+Конвертер курсов валют. Необходимо написать React-компонент, который представлен двумя зависимыми полями ввода ("RUB"
+и "USD") и кнопкой между ними ("<->")
+При изменении значения в 1-м поле - меняется значение в 2-м (если в поле "RUB" ввести 150, значение в поле "USD" должно
+стать 1)
+При нажатии на кнопку - поля меняются местами (поле "RUB" становится 2-м, а поле "USD" - 1-м, и наоборот), и 2-е поле
+блокируется
+Курс валют может отличаться в зависимости от направления конвертации (например, 150 RUB = 1 USD, но 1 USD = 75 RUB)
+
+### 9. Игра в города
+
+Игра в города. Расположить города так, чтобы каждое следующее
+название начиналось с той буквы, на которую заканчивалось
+предыдущее название. Если нет такого названия, то на предпоследнюю букву и так далее.
+
+```javascript
+const cities = [
+  'New York',
+  'Kansas City',
+  'Chicago',
+  'Houston',
+  'Phoenix',
+  'Philadelphia',
+  'San Antonio',
+  'San Diego',
+  'Dallas',
+  'San Jose',
+  'Austin',
+  'Jacksonville',
+  'San Francisco',
+  'Indianapolis',
+  'Columbus',
+  'Fort Worth',
+  'Charlotte',
+  'Seattle',
+  'Denver',
+  'Washington',
+  'Boston',
+  'El Paso',
+  'Detroit',
+  'Nashville',
+  'Portland',
+  'Memphis',
+  'Oklahoma City',
+  'Las Vegas',
+  'Louisville',
+  'Baltimore',
+  'Milwaukee',
+  'Albuquerque',
+  'Tucson',
+  'Fresno',
+  'Sacramento',
+  'Mesa',
+  'Los Angeles',
+  'Atlanta',
+  'Long Beach',
+  'Omaha',
+  'Raleigh',
+];
+```
+
+### 10 Promise
+
+```javascript
+// Доступно REST API
+// GET /settings -> {...}
+// GET /currentUser -> {lang, ...}
+// GET /dictionaries/$lang -> {...} Использует lang из ответа /currentUser !
+
+function fetchJson(url) {
+  return fetch(url).then(response => response.json());
+}
+
+function startApp(settings, user, dictionary) {
+  console.info(settings, user, dictionary);
+}
+
+function bootstrap() {
+  // TODO: Получить все данные и вызвать метод startApp со всеми полученными данными.
+  startApp(settings, user, dictionary);
+}
+
+```
+
+### 11 Напишите функцию, которая  выполнение функцию на n сек. 
+/ #5 Чутка размяться
+// Usage
+setTimeoutTimes(() => console.log(global.performance.now()), 1000, 3);
+
+// TODO : реализовать функцию
+function setTimeoutTimes(fn, delay, times) {
+let timer1;
+let timer2;
+
+const retry = () => {
+timer1 = setTimeout(() => {
+fn();
+timer2 = setTimeout(retry, times);
+}, delay);
+};
+retry();
+
+return function clearTimeoutTimes() {
+clearTimeout(timer1);
+clearTimeout(timer2);
+};
+}
+
 
 
