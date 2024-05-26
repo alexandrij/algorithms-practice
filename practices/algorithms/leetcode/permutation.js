@@ -24,6 +24,9 @@
  *
  */
 
+import { factorial } from './factorial.js';
+import { nextPermutation } from './next-permutation.js';
+
 /**
  * 4 * 3 * 2 * 1 | 0, 1 <-> 2, 2 <->3
  *
@@ -68,36 +71,45 @@
  *
  */
 
-function swap(arr, a, b) {
-  let temp = arr[a];
+function swap(str, a, b) {
+  const arr = str.split('');
+  const temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
+  return arr.join('');
 }
 
-const permutation = (arr, start) => {
-  if (arr.length < 2) {
-    return arr;
-  }
-
-  const len = arr.length;
-  let res = [];
-
-  start = typeof start === 'number' ? start : 0;
-
-  if (start >= len) {
+export const permutation = (str, start = 0) => {
+  if (start > str.length - 1) {
     return [];
   }
 
-  for (let i = start; i < len; i++) {
-    if (i !== start) res.push(arr.join(''));
+  const result = permutation(str, start + 1);
 
-    res = res.concat(permutation(arr, start + 1));
-
-    if (i < len - 1) {
-      swap(arr, start, i + 1);
-    }
+  for (let i = start + 1; i < str.length; i++) {
+    const permutated = swap(str, start, i);
+    result.push(permutated);
+    result.push(...permutation(permutated, start + 1));
   }
-  return res;
+
+  return result;
 };
 
-console.log(permutation());
+{
+  const str = 'abc';
+  const res = permutation(str);
+  const exLength = factorial(str.length) - 1;
+  console.log(exLength, res.length, new Set(res).size, res);
+}
+{
+  const str = 'abcd';
+  const res = permutation(str);
+  const exLength = factorial(str.length) - 1;
+  console.log(exLength, res.length, new Set(res).size, res);
+}
+{
+  const str = 'abcdef';
+  const res = permutation(str);
+  const exLength = factorial(str.length) - 1;
+  console.log(exLength, res.length, new Set(res).size, res);
+}
