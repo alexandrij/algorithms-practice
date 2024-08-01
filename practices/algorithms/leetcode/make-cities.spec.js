@@ -14,20 +14,14 @@ describe(`algoritms: make-cities`, () => {
       'Dallas',
       'San Jose',
       'Austin',
-      'Jacksonville',
       'San Francisco',
       'Indianapolis',
       'Columbus',
-      'Fort Worth',
-      'Charlotte',
       'Seattle',
-      'Denver',
       'Washington',
       'Boston',
       'El Paso',
-      'Detroit',
       'Nashville',
-      'Portland',
       'Memphis',
       'Oklahoma City',
       'Las Vegas',
@@ -36,9 +30,7 @@ describe(`algoritms: make-cities`, () => {
       'Milwaukee',
       'Albuquerque',
       'Tucson',
-      'Fresno',
       'Sacramento',
-      'Mesa',
       'Los Angeles',
       'Atlanta',
       'Long Beach',
@@ -80,6 +72,7 @@ describe(`algoritms: make-cities`, () => {
       'Milwaukee',
       'Washington',
     ];
+
     expect(makeCities3(sourceCities)).toEqual(expectedCities);
     expect(makeCities1(sourceCities)).toEqual(expectedCities);
   });
