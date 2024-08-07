@@ -1,4 +1,4 @@
-_### 1. Приоритет выполнения асинхронных вызовов
+### 1. Приоритет выполнения асинхронных вызовов
 
 ```typescript
 let a = 8;
@@ -279,6 +279,7 @@ function memoize(fn, resolver = JSON.stringify, time) {
 
 ```javascript
 const cities = [
+
   'New York',
   'Kansas City',
   'Chicago',
@@ -290,20 +291,14 @@ const cities = [
   'Dallas',
   'San Jose',
   'Austin',
-  'Jacksonville',
   'San Francisco',
   'Indianapolis',
   'Columbus',
-  'Fort Worth',
-  'Charlotte',
   'Seattle',
-  'Denver',
   'Washington',
   'Boston',
   'El Paso',
-  'Detroit',
   'Nashville',
-  'Portland',
   'Memphis',
   'Oklahoma City',
   'Las Vegas',
@@ -312,9 +307,7 @@ const cities = [
   'Milwaukee',
   'Albuquerque',
   'Tucson',
-  'Fresno',
   'Sacramento',
-  'Mesa',
   'Los Angeles',
   'Atlanta',
   'Long Beach',
@@ -323,7 +316,21 @@ const cities = [
 ];
 ```
 
-### 10 Promise
+### 10. Найти максимальную длину отрезка из рядом стоящих 1
+
+```javascript
+function maxLenNumbers(numbers) {
+  
+}
+
+console.log(maxLenNumbers([0, 0, 1, 1, 1, 0, 0, 1, 1])); // 3
+console.log(maxLenNumbers([0, 0, 1, 1, 0, 0, 1, 1])); // 2
+console.log(maxLenNumbers([1, 1, 1, 1])); // 4
+console.log(maxLenNumbers([0, 0, 0, 0])); // 0
+console.log(maxLenNumbers([])); // 0
+```
+
+### 11 Promise.all
 
 ```javascript
 // Доступно REST API
@@ -346,29 +353,36 @@ function bootstrap() {
 
 ```
 
-### 11 Напишите функцию, которая  выполнение функцию на n сек. 
-/ #5 Чутка размяться
-// Usage
+### 12 Реализовать функцию setTimeoutTimes, которая выполняется через n мс., в течении m мс.
+
+
+// Пример использования
+
+```javascript
+// Функция выполняется через каждые 3 мс в течении 1000 мс.
 setTimeoutTimes(() => console.log(global.performance.now()), 1000, 3);
+```
+
+Решение
+
+```javascript
 
 // TODO : реализовать функцию
 function setTimeoutTimes(fn, delay, times) {
-let timer1;
-let timer2;
+  let timer1;
+  let timer2;
 
-const retry = () => {
-timer1 = setTimeout(() => {
-fn();
-timer2 = setTimeout(retry, times);
-}, delay);
-};
-retry();
+  const retry = () => {
+    timer1 = setTimeout(() => {
+      fn();
+      timer2 = setTimeout(retry, times);
+    }, delay);
+  };
+  retry();
 
-return function clearTimeoutTimes() {
-clearTimeout(timer1);
-clearTimeout(timer2);
-};
+  return function clearTimeoutTimes() {
+    clearTimeout(timer1);
+    clearTimeout(timer2);
+  };
 }
-
-
-
+```
