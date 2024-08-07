@@ -1,3 +1,5 @@
+// Найти максимальную длину отрезка из рядом стоящих 1
+
 function maxLenNumbers(numbers) {
   let maxLen = 0;
   let len = 0;
