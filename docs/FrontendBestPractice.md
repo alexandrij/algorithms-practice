@@ -1,0 +1,54 @@
+# Best practice для React - приложения
+
+## 1. Файловая структура
+
+- **shared**
+- **domain**
+    - vessels
+        - types
+            - index.ts
+            - vessel.ts
+            - vessel-type.ts
+        - api
+            - index.ts
+            - vessels-api.ts
+            - vessel-types-api.ts
+        - index.ts
+- **features**
+    - vessels
+        - assets
+        - constants
+        - containers
+            - vessel-list.tsx
+            - vessel-list.module.scss
+            - vessel-card.tsx
+            - vessel-card.module.scss
+            - vessel-editor.tsx
+            - vessel-editor.module.scss
+        - components
+            - vessel-list-searchbar.tsx
+            - vessel-list-searchbar.tsx
+            - vessel-list-left-filter.tsx
+            - vessel-list-left-filter.tsx
+            - vessel-card-field-containers.tsx
+            - vessel-card-field-containers.module.scss
+        - types
+            - vessel-form.ts
+            - vessel-card.ts
+        - utils
+            - vessel-selectors.ts
+            - vessel-editor-adapters.ts
+        - hooks
+        - _store.ts_
+        - _index.ts_
+    - routes
+        - assets
+        - constants
+        - containers
+        - components
+        - types
+        - utils
+        - hooks
+        - _store.ts_
+        - _index.ts_
+- **pages**
