@@ -29,21 +29,20 @@ function hasInSet(permission) {
 }
 
 for (const n of [1000, 10000, 15000, 20000, 50000, 100000]) {
-  console.group(`*** benchmark ${n} ***`);
-
+  console.group(`*** benchmark кол-во повторений ${n} ***`);
   {
     const t1 = performance.now();
     for (let i = 0; i < n; i++) {
       hasInArray('view', 'logist');
     }
-    console.info(`Поиск в массиве. Кол-во ${n}: Время: ${(performance.now() - t1).toFixed(2)}мс.`);
+    console.info(`Поиск в массиве: Время: ${(performance.now() - t1).toFixed(2)}мс.`);
   }
   {
     const t1 = performance.now();
     for (let i = 0; i < n; i++) {
       hasInSet('view', roles);
     }
-    console.info(`Поиск во множестве. Кол-во ${n}: Время: ${(performance.now() - t1).toFixed(2)}мс.`);
+    console.info(`Поиск во множестве: Время: ${(performance.now() - t1).toFixed(2)}мс.`);
   }
   console.groupEnd();
   console.info('\n');
