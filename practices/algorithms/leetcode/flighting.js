@@ -11,8 +11,7 @@ const flights = [
   ['A', 'С'],
   ['A', 'D'],
   ['A', 'O'],
-  ['B', 'N'],
-  ['D', 'K'],
+  ['B', 'F'],
   ['D', 'K'],
   ['D', 'L'],
   ['D', 'M'],
@@ -20,11 +19,10 @@ const flights = [
   ['M', 'Q'],
   ['M', 'Z'],
   ['O', 'P'],
-  ['O', 'Y'],
   ['L', 'G'],
   ['L', 'F'],
+  ['F', 'N'],
   ['F', 'Y'],
-  ['Y', 'Q'],
 ];
 
 const mFlights = flights.reduce((acc, [from, to]) => {
@@ -85,6 +83,37 @@ function findPath(from, to, fetchFlighting) {
   });
 }
 
+function findPathBFS(start, end) {
+  const graph = flights.reduce((acc, [from, to]) => {
+    if (!acc.has(from)) {
+      acc.set(from, [to]);
+    } else {
+      acc.get(from).push(to);
+    }
+    return acc;
+  }, new Map());
+
+  const result = [];
+  const queue = [[start]];
+  const visited = new Set();
+
+  while (queue.length) {
+    const path = queue.shift();
+    const node = path[path.length - 1];
+
+    if (node === end) {
+      result.push(path);
+    }
+
+    if (!visited.has(node)) {
+      visited.add(node);
+      (graph.get(node) || []).forEach((next) => queue.push([...path, next]));
+    }
+  }
+
+  return result;
+}
+
 // function findPathFlighting(from, to) {
 //   let path = [];
 //   const queue = mFlights[from] || [];
@@ -107,3 +136,7 @@ function findPath(from, to, fetchFlighting) {
 findPath('A', 'N', fetchFlighting).then(console.log); // Promise.resolve(['A', 'D', 'N'])
 findPath('A', 'Q', fetchFlighting).then(console.log); // Promise.resolve(["A", "D", "M", "Q"])
 findPath('A', 'W', fetchFlighting).then(console.log); // Promise.resolve([])
+
+console.log(findPathBFS('A', 'N')); // Promise.resolve(['A', 'D', 'N'])
+console.log(findPathBFS('A', 'Q')); // Promise.resolve(["A", "D", "M", "Q"])
+console.log(findPathBFS('A', 'W')); // Promise.resolve([])

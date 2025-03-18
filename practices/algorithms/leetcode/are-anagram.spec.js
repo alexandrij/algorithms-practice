@@ -1,4 +1,4 @@
-import { areAnagram } from './are-anagram';
+import { areAnagram } from './are-anagram.js';
 
 describe(`yandex: anagram`, () => {
   it(`количество букв в словах одинаково`, () => {

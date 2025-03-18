@@ -1,4 +1,4 @@
-import { maxProfit } from './max-profit';
+import { maxProfit } from './max-profit.js';
 
 describe('yandex: max-profit', () => {
   it(`расчет, когда имеется колебания акций`, () => {

@@ -22,3 +22,36 @@ export const permutation = (str, start = 0) => {
 
   return result;
 };
+
+export const permutationQueue = (str) => {
+  let queue = [str];
+  let start = 0;
+
+  while (start < str.length) {
+    const result = [];
+    while (queue.length > 0) {
+      const cur = queue.shift();
+
+      result.push(cur);
+      for (let i = start + 1; i < cur.length; i++) {
+        const permutated = swap(cur, start, i);
+        result.push(permutated);
+      }
+    }
+    queue = [...result];
+    start++;
+  }
+
+  return queue;
+};
+
+console.log(permutationQueue('abc'));
+console.log(permutationQueue('abcd'));
+console.log(permutationQueue('abcde'));
+
+// abc 0, 1, 2
+// acb 0, 2, 1
+// bac 1, 0, 2
+// bca 1, 2, 0
+// cab 2, 0, 1
+// cba 2, 1, 0

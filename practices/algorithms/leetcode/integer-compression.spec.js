@@ -10,4 +10,16 @@ describe(`algoritms: integer compression`, () => {
   it(`сжатие массива чисел: [2, 3, 8, 9]`, () => {
     expect(integerCompression([2, 3, 8, 9])).toBe('2-3,8-9');
   });
+  it(`сжатие массива чисел: []`, () => {
+    expect(integerCompression([])).toBe('');
+  });
+  it(`сжатие массива чисел: [1]`, () => {
+    expect(integerCompression([1])).toBe('1');
+  });
+  it(`сжатие массива чисел: [1, 1]`, () => {
+    expect(integerCompression([1, 1])).toBe('1,1');
+  });
+  it(`сжатие массива чисел: [1, 1, 3, 2]`, () => {
+    expect(integerCompression([1, 1, 3, 2])).toBe('1,1,3,2');
+  });
 });
