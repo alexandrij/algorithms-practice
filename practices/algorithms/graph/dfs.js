@@ -1,4 +1,4 @@
-import { mockVertexGraph1 } from './mock-graph.js';
+import { mockAdjList1 } from './mock-graph.js';
 
 const dfs = (graph, vertex, fn, used) => {
   fn(vertex);
@@ -48,6 +48,6 @@ const dfsStack = (listOfAdjency, startVertex, callback) => {
   }
 };
 
-dfs(mockVertexGraph1, 1, console.debug, new Set());
+dfs(mockAdjList1, 1, console.debug, new Set());
 console.debug('------------');
-dfsStack(mockVertexGraph1, 1, console.debug);
+dfsStack(mockAdjList1, 1, console.debug);

@@ -4,9 +4,9 @@
 
 const roles = ['r1', 'r2', 'r3', 'r4', 'r5', 'logist', 'expeditor', 'admin'];
 const permissionArrayRoles = {
-  create: ['rrrrr1', 'logist', 'expeditor'],
-  edit: ['rrrrr1', 'logist', 'expeditor'],
-  view: ['rrrrr1', 'client', 'expeditor', 'logist'],
+  create: ['rrrrr1', 'rrrrr2', 'rrrrr3', 'rrrrr4', 'rrrrr5', 'rrrrr6', 'rrrrr6', 'logist', 'expeditor'],
+  edit: ['rrrrr1', 'rrrrr2', 'rrrrr3', 'rrrrr4', 'rrrrr5', 'rrrrr6', 'rrrrr6', 'logist', 'expeditor'],
+  view: ['rrrrr1', 'rrrrr2', 'rrrrr3', 'rrrrr4', 'rrrrr5', 'rrrrr6', 'rrrrr6', 'logist', 'expeditor'],
 };
 
 const permissionSetRoles = {};

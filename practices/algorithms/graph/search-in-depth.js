@@ -1,4 +1,4 @@
-import { mockGraph1 } from './mock-graph.js';
+import { mockPairs1 } from './mock-graph.js';
 
 const searchInDepth = (graph, startVertex) => {
   const treeGraph = graph.reduce((acc, [from, to]) => {
@@ -29,4 +29,11 @@ const searchInDepth = (graph, startVertex) => {
   return result;
 };
 
-console.debug(searchInDepth(mockGraph1, 1));
+/**
+
+ 6 - 4
+ 3 - 1 - 2
+
+ */
+
+console.debug(searchInDepth(mockPairs1, 1));

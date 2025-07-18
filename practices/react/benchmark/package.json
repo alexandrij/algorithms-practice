@@ -1,0 +1,21 @@
+{
+  "name": "@react-practice/benchmark",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "chalk": "^5.4.1",
+    "playwright": "^1.51.1",
+    "prettyjson": "^1.2.5",
+    "tracealyzer": "^0.10.3"
+  }
+}

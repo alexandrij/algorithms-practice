@@ -1,4 +1,4 @@
-import { mockVertexGraph1 } from './mock-graph.js';
+import { mockAdjList1 } from './mock-graph.js';
 
 const bfs = (graph, startVertex, callback) => {
   const visited = {};
@@ -30,4 +30,4 @@ const bfs = (graph, startVertex, callback) => {
   }
 };
 
-bfs(mockVertexGraph1, 1, console.debug);
+bfs(mockAdjList1, 1, console.debug);

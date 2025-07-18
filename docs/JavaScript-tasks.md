@@ -438,3 +438,6 @@ function findPath(from, to, fetchFlighting) {
 https://code.yandex-team.ru/0b47ed4d-0c74-4187-8c78-bc583e240757
 
 Draft
+
+// Написать Promise.any, которая принимает на вход массив Promises и возвращает первый выполненный результат
+// либо массив со всеми ошибками. 
