@@ -354,83 +354,39 @@ RxJS предоставляет несколько видов Subject’ов, к
 
 # Паттерны
 
-```typescript
 
-// 1. Абстрактные интерфейсы продуктов
-interface Button {
-  render(): void;
-}
+# Рендер
 
-interface Checkbox {
-  toggle(): void;
-}
+1. Style (recalculation) - процесс пересчёта стилей элементов страницы на основе правил CSS.
+2. Layout - Вычисление слоев, расчет положения элементов на странице, их размеров, взаимного влияния друг на друга. Чем больше DOM элементов на странице, тем тяжелее эта операция.  
+   offsetWidth, offsetLeft, getBoundingClientRect, и т.д, кроме transform и will-change
+3. Paint - На этом шаге отрисовываем элементы, применяем стили color, background и т.д..
+4. Composite - Задача этой операции: совместить слои и получить готовый кадр. Это единственная операция, которая в классическом веб-сайте исполняется с помощью GPU. На этом этапе браузер исполняет специфические CSS стили, например transform.
 
-// 2. Конкретные продукты
-class MacButton implements Button {
-  render(): void {
-    console.log("Mac button rendered");
-  }
-}
 
-class WinButton implements Button {
-  render(): void {
-    console.log("Windows button rendered");
-  }
-}
+# Загрузка Веб - страницы
+1. Первый этап: DNS-запрос и поиск IP-адреса
+2. Установление соединения с сервером.
+   1. TCP-handshake (тройное рукопожатие)
+3. Шифрование и установка безопасного соединения (TLS/SSL)
+   1. TLS-handshake. Обмен сертификатами. Проверка сертификатов и установление зашифрованного канала
+4. Запрос страницы
+5. Ответ на запрос
+   Структура ответа
+   1. Статус-код. Это трехзначное число, которое указывает, как был обработан запрос (200 OK, 404 Not Found, 500 Internal Server Error).
+   2. Заголовки ответа. Заголовки содержат информацию о типе и размере контента, настройках кеша и параметрах соединения (Content-Type, Cache-Control, Set-Cookie).
+   3. Тело ответа. Основное содержимое ответа — HTML-документ, который браузер начнёт парсить и отображать.
+6. Парсинг HTML-документа.
+   1. Браузер считывает HTML и строит дерево DOM (Document Object Model).
+   2. Парсинг CSS: Браузер считывает CSS и строит дерево CSSOM (CSS Object Model)
+   3. Совмещение DOM и CSSOM: Браузер создает дерево рендеринга (Render Tree). Исключаются display none
+   4. Расчёт layout (раскладка): Определяет размеры и позиции элементов на странице.
+   5. Отрисовка (Paint): Наносит пиксели на экран, включая текст, цвета, границы и т.д.
+   6. Составление (Composite): Слой отрисовки объединяется в финальный вид, отображаемый на экране.
+7. Загрузка ресурсов (изображения, CSS, JavaScript)
+8. Выполнение JavaScript-кода
+9. Отрисовка страницы
 
-class MacCheckbox implements Checkbox {
-  toggle(): void {
-    console.log("Mac checkbox toggled");
-  }
-}
+ССылки:
 
-class WinCheckbox implements Checkbox {
-  toggle(): void {
-    console.log("Windows checkbox toggled");
-  }
-}
-
-// 3. Абстрактная фабрика
-interface GUIFactory {
-  createButton(): Button;
-
-  createCheckbox(): Checkbox;
-}
-
-// 4. Конкретные фабрики
-class MacFactory implements GUIFactory {
-  createButton(): Button {
-    return new MacButton();
-  }
-
-  createCheckbox(): Checkbox {
-    return new MacCheckbox();
-  }
-}
-
-class WinFactory implements GUIFactory {
-  createButton(): Button {
-    return new WinButton();
-  }
-
-  createCheckbox(): Checkbox {
-    return new WinCheckbox();
-  }
-}
-
-// 5. Клиентский код
-function runApp(factory: GUIFactory) {
-  const button = factory.createButton();
-  button.render();
-
-  const checkbox = factory.createCheckbox();
-  checkbox.toggle();
-}
-
-// Можно легко подменять фабрику
-// Mac UI
-runApp(new MacFactory());
-
-// Windows UI
-runApp(new WinFactory());
-```
+1. https://www.hackfrontend.com/docs/angular/hierarchy-of-injectors
